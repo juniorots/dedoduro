@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Schedule à procura de atualizações.
 =======
 Schedule sua pesquisa.
@@ -20,3 +21,6 @@ Schedule às atualizações.
 =======
 Schedule às atualizações.
 >>>>>>> 22e084ac77660c83f301b970a937c3ff4dd991a0
+=======
+Schedule às atualizações.
+>>>>>>> 1e8556fb7ad6c9f22722bb4986b60af6a38c75de
