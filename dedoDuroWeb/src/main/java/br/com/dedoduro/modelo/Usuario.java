@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.dedoduro.modelo;
 
 import java.util.LinkedList;
@@ -56,5 +55,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public LinkedList<Banca> getBancas() {
+        return bancas;
+    }
+
+    public void setBancas(LinkedList<Banca> bancas) {
+        this.bancas = bancas;
     }
 }
