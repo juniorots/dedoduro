@@ -2,4 +2,8 @@
 dedoDuroWeb/target/**/*
 =======
 target/**/*
+<<<<<<< HEAD
 >>>>>>> 57f72249435d3d1de470c7e5164344c771c7b937
+=======
+/target/
+>>>>>>> 1f8c5cd0eba8d230e95c8d9c8d7b97719e3dc681
