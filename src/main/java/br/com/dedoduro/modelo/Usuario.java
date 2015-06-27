@@ -31,6 +31,8 @@ public class Usuario {
     private String email;
     private String senha;
     
+    private String receberEmail; // S - Sim; N - Nao;
+    
     @ManyToMany
     private LinkedList<Banca> bancas;
     
@@ -40,6 +42,25 @@ public class Usuario {
 
     public void setCodigoUsuario(Long codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
+    }
+
+    public String getReceberEmail() {
+        return receberEmail;
+    }
+
+    public void setReceberEmail(String receberEmail) {
+        this.receberEmail = receberEmail;
+    }
+
+    public LinkedList<Banca> getBancas() {
+        if (bancas == null) {
+            bancas = new LinkedList<Banca>();
+        }
+        return bancas;
+    }
+
+    public void setBancas(LinkedList<Banca> bancas) {
+        this.bancas = bancas;
     }
 
     public String getEmail() {
