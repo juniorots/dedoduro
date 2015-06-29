@@ -17,7 +17,6 @@ import javax.persistence.Table;
  * @author Jose Alves
  */
 @Entity
-@Table
 public class Link {
     
     @Id

@@ -6,30 +6,34 @@
 
 package br.com.dedoduro.modelo;
 
+import br.com.dedoduro.framework.persistence.DomainObject;
 import java.util.LinkedList;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author Jose Alves
  */
 @Entity
-@Table
-public class Usuario {
+public class Usuario extends DomainObject {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigoUsuario;
     
-    @Column( nullable = false )
+    @NotNull
     private String email;
+    
+    @NotNull
     private String senha;
+    
+    @NotNull
+    private String receberEmail; // S - Sim; N - Nao;
     
     @ManyToMany
     private LinkedList<Banca> bancas;
@@ -40,6 +44,25 @@ public class Usuario {
 
     public void setCodigoUsuario(Long codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
+    }
+
+    public String getReceberEmail() {
+        return receberEmail;
+    }
+
+    public void setReceberEmail(String receberEmail) {
+        this.receberEmail = receberEmail;
+    }
+
+    public LinkedList<Banca> getBancas() {
+        if (bancas == null) {
+            bancas = new LinkedList<Banca>();
+        }
+        return bancas;
+    }
+
+    public void setBancas(LinkedList<Banca> bancas) {
+        this.bancas = bancas;
     }
 
     public String getEmail() {
