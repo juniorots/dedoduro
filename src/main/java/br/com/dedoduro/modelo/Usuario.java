@@ -9,9 +9,11 @@ package br.com.dedoduro.modelo;
 import br.com.dedoduro.framework.persistence.DomainObject;
 import java.util.LinkedList;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
@@ -35,7 +37,8 @@ public class Usuario extends DomainObject {
     @NotNull
     private String receberEmail; // S - Sim; N - Nao;
     
-    @ManyToMany
+    @ManyToMany (fetch=FetchType.LAZY)
+    @JoinColumn(name = "codigoBanca")
     private LinkedList<Banca> bancas;
     
     public Long getCodigoUsuario() {
