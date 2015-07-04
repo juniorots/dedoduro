@@ -6,8 +6,6 @@ package br.com.dedoduro.negocio;
  * and open the template in the editor.
  */
 
-
-
 import br.com.dedoduro.base.UsuarioDAO;
 import br.com.dedoduro.modelo.Usuario;
 import java.util.List;
@@ -48,11 +46,7 @@ public class UsuarioDAOTest {
     }
 
     @Test
-<<<<<<< HEAD
     public void mainTest() {
-=======
-    public void testMain() {
->>>>>>> 53e5c18689d32f091ae90e241bf4bc9fd81e6d25
 
         @Cleanup
         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");

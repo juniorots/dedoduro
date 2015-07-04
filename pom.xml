@@ -32,16 +32,9 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-<<<<<<< HEAD
             <version>4.9</version>
         </dependency>
-        
-=======
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
 
->>>>>>> 53e5c18689d32f091ae90e241bf4bc9fd81e6d25
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -159,15 +152,12 @@
             </plugin>
             
             <plugin>
-<<<<<<< HEAD
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.9</version>
-          </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
             
             <plugin>
-=======
->>>>>>> 53e5c18689d32f091ae90e241bf4bc9fd81e6d25
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
