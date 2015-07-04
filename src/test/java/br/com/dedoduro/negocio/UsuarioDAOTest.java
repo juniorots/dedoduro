@@ -18,6 +18,7 @@ import org.junit.AfterClass;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *
@@ -44,8 +45,8 @@ public class UsuarioDAOTest {
     public void tearDown() {
     }
 
-    //@Test
-    public void testInsert() {
+    @Test
+    public void mainTest() {
 
         @Cleanup
         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default_database");
