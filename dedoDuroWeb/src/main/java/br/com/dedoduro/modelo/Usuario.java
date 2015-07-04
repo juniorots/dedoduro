@@ -3,42 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.dedoduro.modelo;
 
-import br.com.dedoduro.framework.persistence.DomainObject;
 import java.util.LinkedList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jose Alves
  */
 @Entity
-public class Usuario extends DomainObject {
+@Table
+public class Usuario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigoUsuario;
     
-    @NotNull
+    @Column( nullable = false )
     private String email;
-    
-    @NotNull
     private String senha;
     
-    @NotNull
-    private String receberEmail; // S - Sim; N - Nao;
-    
-    @ManyToMany (fetch=FetchType.LAZY)
-    @JoinColumn(name = "codigoBanca")
+    @ManyToMany
     private LinkedList<Banca> bancas;
     
     public Long getCodigoUsuario() {
@@ -47,25 +39,6 @@ public class Usuario extends DomainObject {
 
     public void setCodigoUsuario(Long codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
-    }
-
-    public String getReceberEmail() {
-        return receberEmail;
-    }
-
-    public void setReceberEmail(String receberEmail) {
-        this.receberEmail = receberEmail;
-    }
-
-    public LinkedList<Banca> getBancas() {
-        if (bancas == null) {
-            bancas = new LinkedList<Banca>();
-        }
-        return bancas;
-    }
-
-    public void setBancas(LinkedList<Banca> bancas) {
-        this.bancas = bancas;
     }
 
     public String getEmail() {
@@ -82,5 +55,13 @@ public class Usuario extends DomainObject {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public LinkedList<Banca> getBancas() {
+        return bancas;
+    }
+
+    public void setBancas(LinkedList<Banca> bancas) {
+        this.bancas = bancas;
     }
 }

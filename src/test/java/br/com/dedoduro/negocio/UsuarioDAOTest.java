@@ -1,10 +1,12 @@
+package br.com.dedoduro.negocio;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-package br.com.dedoduro.negocio;
+
 
 import br.com.dedoduro.base.UsuarioDAO;
 import br.com.dedoduro.modelo.Usuario;
@@ -46,10 +48,14 @@ public class UsuarioDAOTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void mainTest() {
+=======
+    public void testMain() {
+>>>>>>> 53e5c18689d32f091ae90e241bf4bc9fd81e6d25
 
         @Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default_database");
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
 
         @Cleanup
         final EntityManager entityManager = entityManagerFactory.createEntityManager();

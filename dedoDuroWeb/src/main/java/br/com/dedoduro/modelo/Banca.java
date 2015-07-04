@@ -8,26 +8,25 @@ package br.com.dedoduro.modelo;
 
 import java.util.LinkedList;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jose Alves
  */
 @Entity
+@Table
 public class Banca {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigoBanca;
     
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinColumn(name = "codigoLink")
+    @ManyToMany
     private LinkedList<Link> links;
 
     public Long getCodigoBanca() {
