@@ -46,6 +46,10 @@ public class UsuarioDAOTest {
     }
 
     @Test
+    public void example() {
+    }
+    
+//    @Test
     public void mainTest() {
 
         @Cleanup
