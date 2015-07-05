@@ -7,7 +7,8 @@
 package br.com.dedoduro.modelo;
 
 import br.com.dedoduro.framework.persistence.DomainObject;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -39,7 +40,7 @@ public class Usuario extends DomainObject {
     
     @ManyToMany (fetch=FetchType.LAZY)
     @JoinColumn(name = "codigoBanca")
-    private LinkedList<Banca> bancas;
+    private Collection<Banca> bancas;
     
     public Long getCodigoUsuario() {
         return codigoUsuario;
@@ -57,14 +58,14 @@ public class Usuario extends DomainObject {
         this.receberEmail = receberEmail;
     }
 
-    public LinkedList<Banca> getBancas() {
+    public Collection<Banca> getBancas() {
         if (bancas == null) {
-            bancas = new LinkedList<Banca>();
+            bancas = new ArrayList<Banca>();
         }
         return bancas;
     }
 
-    public void setBancas(LinkedList<Banca> bancas) {
+    public void setBancas(ArrayList<Banca> bancas) {
         this.bancas = bancas;
     }
 

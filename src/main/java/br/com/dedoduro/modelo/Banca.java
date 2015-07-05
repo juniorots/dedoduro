@@ -6,7 +6,8 @@
 
 package br.com.dedoduro.modelo;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Banca {
     
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinColumn(name = "codigoLink")
-    private LinkedList<Link> links;
+    private Collection<Link> links;
 
     public Long getCodigoBanca() {
         return codigoBanca;
@@ -38,12 +39,16 @@ public class Banca {
         this.codigoBanca = codigoBanca;
     }
 
-    public LinkedList<Link> getLinks() {
+    public Collection<Link> getLinks() {
+        if (links == null) {
+            links = new ArrayList();
+        }
         return links;
     }
 
-    public void setLinks(LinkedList<Link> links) {
+    public void setLinks(Collection<Link> links) {
         this.links = links;
     }
+
     
 }
