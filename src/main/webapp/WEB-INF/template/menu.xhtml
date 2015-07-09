@@ -13,6 +13,7 @@
         <ul>
            <!-- 
            <li class='active'><a href='#'> <h:graphicImage library="images" name="menu.png"/> </a> 
+           <li class='active'><span id="iconeMenu"/><a href='#'>Menu</a> 
            -->
            <li class='active'><a href='#'>Menu</a> 
                <ul>
@@ -21,7 +22,36 @@
                    <li><a href='#'>Agendar tarefa</a></li>
                </ul>
            </li>
+           
+           <li style="padding-left: 85%; padding-top: 9px;">
+               
+        <!--
+            Tratando janela de login
+        -->
+        <div id="loginContainer">
+            <a href="#" id="loginButton"><span>Entrar</span><em></em></a>
+            <div style="clear:both"></div>
+            <div id="loginBox">                
+                <form id="loginForm">
+                    <fieldset id="body">
+                        <fieldset>
+                            <label for="email">E-mail</label>
+                            <input type="text" name="email" id="email" />
+                        </fieldset>
+                        <fieldset>
+                            <label for="password">Senha</label>
+                            <input type="password" name="senha" id="senha" />
+                        </fieldset>
+                        <input type="submit" id="login" value="Entrar" />
+                    </fieldset>
+                    <span><a href="#">Esqueci minha senha</a></span>
+                </form>
+            </div>
+        </div>
+        
+           </li>
         </ul>
+        
         </div>
     </h:body>
 </html>
