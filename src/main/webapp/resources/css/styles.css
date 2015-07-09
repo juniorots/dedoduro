@@ -51,8 +51,9 @@
   float: right;
 }
 #cssmenu > ul > li > a {
-  padding: 17px;
+  padding: 18px;
   font-size: 12px;
+  padding-left: 45px;
   letter-spacing: 1px;
   text-decoration: none;
   color: #dddddd;
@@ -62,6 +63,7 @@
 #cssmenu > ul > li:hover > a {
   color: #ffffff;
 }
+
 #cssmenu > ul > li.has-sub > a {
   padding-right: 30px;
 }
@@ -91,22 +93,46 @@
   transition: all .25s ease;
 }
 
-#iconeMenu {
+#iconeMenu:before {
   position: absolute;
-  left: 15px;
-  top: 15px;
+  left: 0px;
+  top: 6px;
   right: 11px;
   width: 22px;
-  height: 2px;
+  height: 3px;
   display: block;
   background: #dddddd;
   content: '';
 }
 
+#iconeMenu:after {
+  position: absolute;
+  left: 0px;
+  top: 12px;
+  right: 11px;
+  width: 22px;
+  height: 3px;
+  display: block;
+  background: #dddddd;
+  content: '';
+}
+
+#iconeMenu {
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  right: 11px;
+  width: 22px;
+  height: 3px;
+  display: block;
+  background: #dddddd;
+  content: '';
+}
 #cssmenu > ul > li.has-sub:hover > a:before {
   top: 23px;
   height: 0;
 }
+
 #cssmenu ul ul {
   position: absolute;
   left: -9999px;
@@ -168,6 +194,7 @@
   background: #dddddd;
   content: '';
 }
+
 #cssmenu.align-right ul ul li.has-sub > a:after {
   right: auto;
   left: 11px;
@@ -195,14 +222,41 @@
   top: 17px;
   height: 0;
 }
-@media all and (max-width: 768px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
-  #cssmenu {
+
+/*
+* max-width: 768px
+* -webkit-min-device-pixel-ratio: 2
+* max-width: 1024px
+* min--moz-device-pixel-ratio: 2
+* max-width: 1024px
+* -o-min-device-pixel-ratio: 2/1
+* max-width: 1024px
+* min-resolution: 192dpi 
+* max-width: 1024px 
+* min-resolution: 2dppx 
+* max-width: 1024px
+*/
+@media all and (max-width: 100px), only screen and (-webkit-min-device-pixel-ratio: 4) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+    #cssmenu {
     width: 100%;
   }
   #cssmenu ul {
     width: 100%;
-    display: none;
+    /*display: none;*/
   }
+  
+  #cssmenu:after,
+  #cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+  
+  
+/*
   #cssmenu.align-center > ul {
     text-align: left;
   }
@@ -236,6 +290,8 @@
   #cssmenu ul ul li.active > a {
     color: #ffffff;
   }
+  */
+  
   #cssmenu ul ul,
   #cssmenu ul ul ul,
   #cssmenu.align-right ul ul {
@@ -243,14 +299,18 @@
     left: 0;
     width: 100%;
     margin: 0;
+    padding-right: 20px;
     text-align: left;
   }
+
   #cssmenu > ul > li.has-sub > a:after,
   #cssmenu > ul > li.has-sub > a:before,
   #cssmenu ul ul > li.has-sub > a:after,
   #cssmenu ul ul > li.has-sub > a:before {
     display: none;
   }
+  
+  /*
   #cssmenu #menu-button {
     display: block;
     padding: 17px;
@@ -303,6 +363,8 @@
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
+  */
+  
   #cssmenu .submenu-button {
     position: absolute;
     z-index: 99;
@@ -356,7 +418,6 @@
     display: none;
   }
 }
-
 /* ----------- Customizando tela de Login ----------- */
 #loginContainer {
     position:relative;
