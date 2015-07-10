@@ -42,19 +42,23 @@
         if (settings.format === 'multitoggle') multiTg();
         else cssmenu.addClass('dropdown');
 
-//        if (settings.sticky === true) cssmenu.css('position', 'fixed');
+        if (settings.sticky === true) cssmenu.css('position', 'fixed');
 
-//        resizeFix = function() {
-//          if ($( window ).width() > 768) {
+        resizeFix = function() {
+            
+            // TRABALHANDO ... :-)
+          $('liCustomizado').css('padding-left', '100px');    
+
+            if ($( window ).width() > 768) {
 //            cssmenu.find('ul').show();
-//          }
-//
-//          if ($(window).width() <= 768) {
+          }
+
+          if ($(window).width() <= 768) {
 //            cssmenu.find('ul').hide().removeClass('open');
-//          }
-//        };
-//        resizeFix();
-//        return $(window).on('resize', resizeFix);
+          }
+        };
+        resizeFix();
+        return $(window).on('resize', resizeFix);
 
       });
   };
