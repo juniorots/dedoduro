@@ -25,7 +25,7 @@
         });
 
         cssmenu.find('li ul').parent().addClass('has-sub');
-
+ 
         multiTg = function() {
           cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
           cssmenu.find('.submenu-button').on('click', function() {
@@ -44,21 +44,13 @@
 
         if (settings.sticky === true) cssmenu.css('position', 'fixed');
 
-        resizeFix = function() {
-            
-            // TRABALHANDO ... :-)
-          $('liCustomizado').css('padding-left', '100px');    
-
-            if ($( window ).width() > 768) {
-//            cssmenu.find('ul').show();
-          }
-
-          if ($(window).width() <= 768) {
-//            cssmenu.find('ul').hide().removeClass('open');
-          }
-        };
-        resizeFix();
-        return $(window).on('resize', resizeFix);
+//        resizeFix = function() {
+//            
+//            // TRABALHANDO ... :-)
+//          $("liCustomizado").css("padding-left", "100px");    
+//        };
+//        resizeFix();
+//        return $(window).on('resize', resizeFix);
 
       });
   };
