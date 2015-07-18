@@ -29,8 +29,7 @@
 }
 #cssmenu {
   font-family: Montserrat, sans-serif;
-  background:  #2F4F4F;
-  /*background:  #445058;*/
+  background:  #445058;
 }
 #cssmenu > ul > li {
   float: left;
@@ -224,11 +223,12 @@
   content: '';
 }
 
-/* ----------- Customizando tela de Login ----------- */
-#liCustomizado {
-    padding-top: 8px; float: right
+#cssmenu ul li span:hover > a,
+#cssmenu ul li span a:hover {
+    background: #ffffff;
 }
 
+/* ----------- Customizando tela de Login ----------- */
 #loginContainer {
     font-family: Montserrat, sans-serif;
     position:relative;
@@ -262,7 +262,7 @@
 }
 
 #loginButton:hover {
-    background:url(../images/buttonbgHover.png) repeat-x;
+    /*background:url(../images/buttonbgHover.png) repeat-x;*/
 }
 
 #loginBox {
