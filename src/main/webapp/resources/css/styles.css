@@ -148,6 +148,7 @@
 #cssmenu ul ul li a:hover {
   color: #ffffff;
 }
+
 #cssmenu ul ul li.has-sub > a:after {
   position: absolute;
   top: 16px;
@@ -187,7 +188,7 @@
   height: 0;
 }
 
-#iconeMenu:before {
+.iconeMenu:before {
   position: absolute;
   left: 0px;
   top: 6px;
@@ -199,7 +200,7 @@
   content: '';
 }
 
-#iconeMenu:after {
+.iconeMenu:after {
   position: absolute;
   left: 0px;
   top: 12px;
@@ -211,7 +212,7 @@
   content: '';
 }
 
-#iconeMenu {
+.iconeMenu {
   position: absolute;
   left: 15px;
   top: 16px;
@@ -223,8 +224,9 @@
   content: '';
 }
 
-#cssmenu ul li span:hover > a,
-#cssmenu ul li span a:hover {
+#cssmenu > ul > li:hover > span.iconeMenu,
+#cssmenu > ul > li:hover > span.iconeMenu:before,
+#cssmenu > ul > li:hover > span.iconeMenu:after {
     background: #ffffff;
 }
 
@@ -259,6 +261,10 @@
     padding:7px 29px 9px 10px;
     display:block;
     text-transform: uppercase;
+}
+
+#loginButton > span:hover {
+     color: #ffffff;
 }
 
 #loginButton:hover {
