@@ -27,3 +27,35 @@
 .fonteNegrito{
     font-weight: bold;
 }
+
+#rodape {
+  bottom: 0;
+  border: 0;
+  display: block;
+  position: absolute;
+  text-align: center;
+  color: #dddddd;
+  font-size: 14px;
+  background:  #445058;
+  width: 99%;
+  height: 25px;
+  font-family: Montserrat, sans-serif;
+  box-sizing: border-box;
+  list-style: none;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#rodape span {
+    display: block;
+    *position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: 5px;
+    font-weight:bold;
+}
+
+#conteudo {
+    padding-bottom: 30px;
+}

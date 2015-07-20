@@ -178,6 +178,7 @@
   -ms-transition: all .25s ease;
   -o-transition: all .25s ease;
   transition: all .25s ease;
+  
 }
 #cssmenu.align-right ul ul li.has-sub > a:before {
   right: auto;
