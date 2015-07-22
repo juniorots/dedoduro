@@ -24,6 +24,11 @@
     cursor: pointer; 
     z-index: 1; 
 }
+
+.stack ul li a:link {
+    text-decoration: none;
+}
+
 .stack ul li { 
     position: absolute; 
 }
@@ -33,6 +38,11 @@
 .stack ul li span { 
     display: none; 
 }
+
+.stack .openStack li span:hover {
+    color: #ffffff;
+}
+
 .stack .openStack li span { 
     font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
     display:block;
