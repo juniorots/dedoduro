@@ -1,6 +1,14 @@
 /*
     -x- Customizando Menu da Janela principal -x-
 */
+.fonteCustomizada {
+    font-weight: bold;
+    color: #445058;
+    
+    /* campos a serem customizados a cada banca */
+    padding-left: 107px;
+}
+
 .stack { 
     position: relative; 
     
