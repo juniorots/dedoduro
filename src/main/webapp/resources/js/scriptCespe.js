@@ -15,21 +15,22 @@ $(function () {
             horizontal = (horizontal+.75)*2;
         });
         $el.next().animate({top: '-60px', left: '100px'}, openspeed).addClass('openStack')
-           .find('li a>img').animate({width: '50px', marginLeft: '2px'}, openspeed);
+           .find('li a>img').animate({width: '60px', marginLeft: '2px'}, openspeed);
         $el.animate({paddingTop: '0'});
     }, function(){
         //reverse above
         var $el=$(this);
-        $el.next().removeClass('openStack').children('li').animate({top: '70px', left: '-100px'}, closespeed);
-        $el.next().find('li a>img').animate({width: '79px', marginLeft: '100'}, closespeed);
+        $el.next().removeClass('openStack').children('li').animate({top: '64px', left: '-100px'}, closespeed);
+        $el.next().find('li a>img').animate({width: '72px', marginLeft: '100'}, closespeed);
+//        $el.animate({paddingTop: '35px'});
     });
      
     // Stacks additional animation
     $('.stack li a').hover(function(){
-        $("img",this).animate({width: '56px'}, 100);
+        $("img",this).animate({width: '72px'}, 100);
         $("span",this).animate({marginRight: '30px'});
     },function(){
-        $("img",this).animate({width: '56px'}, 100);
-        $("span",this).animate({marginRight: '0'});
+        $("img",this).animate({width: '69px'}, 100);
+        $("span",this).animate({marginRight: '0px'});
     });
 });
