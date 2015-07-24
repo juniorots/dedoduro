@@ -4,19 +4,18 @@
 .fonteCustomizada {
     font-weight: bold;
     color: #445058;
-    position : relative;
-    
-    /* campos a serem customizados a cada banca */
-    margin: 0 11% auto;
+    position: relative;
+    display: table-row;
+    text-align: center;
 }
 
 .stack { 
-    position: relative; 
+    position: fixed; 
     display: table;
     
     /* campos a serem customizados a cada banca */
-    margin-top: 25%;
-    padding-left:7%;
+    margin-top: 350px;
+    padding-left:150px;
 }
 .stack > img { 
     position: relative; 
@@ -24,17 +23,17 @@
     z-index: 2;
     
     /* campos a serem customizados a cada banca */
-    margin-top: 25px; 
+    /*margin-top: 25px;*/ 
 }
 .stack ul { 
     list-style: none; 
-    position: absolute; 
+    position: fixed; 
     cursor: pointer; 
     z-index: 1; 
-    
+
     /* campos a serem customizados a cada banca */
-    margin: -37% -20% auto;
-    width: 72px;
+    margin: -65px -35px auto;
+    width: 71px;
 }
 
 .stack ul li a:link {
@@ -60,7 +59,8 @@
     display:block;
     position:relative;
     border: 0;
-    background-color:#445058;
+/*    background-color:#445058; */
+    background-color:black;
     padding: 4px;
     border-radius: 10px;
     -webkit-border-radius: 10px;

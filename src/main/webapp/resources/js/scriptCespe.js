@@ -14,14 +14,14 @@ $(function () {
             vertical = vertical + 55;
             horizontal = (horizontal+.75)*2;
         });
-        $el.next().animate({top: '-60px', left: '100px'}, openspeed).addClass('openStack')
-           .find('li a>img').animate({width: '60px', marginLeft: '2px'}, openspeed);
+        $el.next().animate({top: '405px', left: '200px'}, openspeed).addClass('openStack')
+            .find('li a>img').animate({width: '60px', marginLeft: '2px'}, openspeed);
         $el.animate({paddingTop: '0'});
     }, function(){
         //reverse above
         var $el=$(this);
-        $el.next().removeClass('openStack').children('li').animate({top: '64px', left: '-100px'}, closespeed);
-        $el.next().find('li a>img').animate({width: '72px', marginLeft: '100'}, closespeed);
+        $el.next().removeClass('openStack').children('li').animate({top: '80px', left: '-100px'}, closespeed);
+        $el.next().find('li a>img').animate({width: '71px', marginLeft: '99'}, closespeed);
 //        $el.animate({paddingTop: '35px'});
     });
      
