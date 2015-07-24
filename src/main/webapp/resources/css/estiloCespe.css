@@ -4,13 +4,15 @@
 .fonteCustomizada {
     font-weight: bold;
     color: #445058;
+    position : relative;
     
     /* campos a serem customizados a cada banca */
-    padding-left: 107px;
+    margin: 0 15% auto;
 }
 
 .stack { 
     position: relative; 
+    display: table;
     
     /* campos a serem customizados a cada banca */
     margin-top: 25%;
@@ -31,8 +33,7 @@
     z-index: 1; 
     
     /* campos a serem customizados a cada banca */
-    top: 4px; 
-    padding-left: 5px;
+    margin: -37% -20% auto;
     width: 72px;
 }
 
