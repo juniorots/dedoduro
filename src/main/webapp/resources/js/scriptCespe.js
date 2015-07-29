@@ -20,7 +20,7 @@ $(function () {
     }, function(){
         //reverse above
         var $el=$(this);
-        $el.next().removeClass('openStack').children('li').animate({top: '80px', left: '-100px'}, closespeed);
+        $el.next().removeClass('openStack').children('li').animate({top: '72px', left: '-110px'}, closespeed);
         $el.next().find('li a>img').animate({width: '71px', marginLeft: '99'}, closespeed);
 //        $el.animate({paddingTop: '35px'});
     });
