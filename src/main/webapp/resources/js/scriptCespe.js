@@ -17,6 +17,7 @@ $(function () {
         $el.next().animate({top: '405px', left: '200px'}, openspeed).addClass('openStack')
             .find('li a>img').animate({width: '60px', marginLeft: '2px'}, openspeed);
         $el.animate({paddingTop: '0'});
+        fecharOutrasCestas('.stack');
     }, function(){
         //reverse above
         var $el=$(this);
