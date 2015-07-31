@@ -16,6 +16,13 @@ function fecharOutrasCestas( banca ) {
             $(bancas[i]).find('ul').removeClass('openStack').children('li').animate({top: '72px', left: '-10px'}, closespeed);
             $(bancas[i]).find('ul > li > a > img').animate({width: '71px'}, 100);
             $(bancas[i]).find('ul > li > a > span').animate({marginRight: '0px'});
+
+            // removendo os eventos remanescentes
+            $(bancas[i]).toggle(function() {
+                return false;
+            }, function () {
+                return false;
+            })
         }
     }
 }
