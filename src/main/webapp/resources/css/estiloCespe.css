@@ -36,6 +36,10 @@
     margin: -65px -35px auto;
 }
 
+.stack ul > li > a > img { 
+    width: 71px;
+}
+
 .stack ul li a:link {
     text-decoration: none;
 }

@@ -55,6 +55,9 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   vertical-align: middle;
+  opacity: 0.85;
+  -moz-opacity: 0.85;
+  filter: alpha(opacity=85);
 }
 
 #rodape span {

@@ -15,23 +15,27 @@ $(function () {
             horizontal = (horizontal+.75)*2;
         });
         $el.next().animate({top: '405px', left: '348px'}, openspeed).addClass('openStack')
-            .find('li a>img').animate({width: '60px', marginLeft: '2px'}, openspeed);
+            .find('li a>img').animate({width: '60px', marginLeft: '0px'}, openspeed);
         $el.animate({paddingTop: '0'});
         fecharOutrasCestas('.stackQuadrix');
     }, function(){
         //reverse above
         var $el=$(this);
-        $el.next().removeClass('openStack').children('li').animate({top: '71px', left: '-110px'}, closespeed);
-        $el.next().find('li a>img').animate({width: '71px', marginLeft: '99'}, closespeed);
+        $el.next().removeClass('openStack').children('li').animate({top: '70px', left: '-109px'}, closespeed);
+        $el.next().find('li a>img').animate({width: '71px', marginLeft: '102'}, closespeed);
 //        $el.animate({paddingTop: '35px'});
     });
      
     // Stacks additional animation
     $('.stackQuadrix li a').hover(function(){
-        $("img",this).animate({width: '71px'}, 100);
-        $("span",this).animate({marginRight: '30px'});
+       if ( $('.stackQuadrix').find('ul').attr('class') == 'openStack') {
+            $("img",this).animate({width: '71px'}, 100);
+            $("span",this).animate({marginRight: '30px'});
+        }
     },function(){
-        $("img",this).animate({width: '69px'}, 100);
-        $("span",this).animate({marginRight: '0px'});
+        if ( $('.stackQuadrix').find('ul').attr('class') == 'openStack') {
+            $("img",this).animate({width: '60px'}, 100);
+            $("span",this).animate({marginRight: '0px'});
+        }
     });
 });
