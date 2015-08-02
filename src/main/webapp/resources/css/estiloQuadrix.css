@@ -30,7 +30,7 @@
     position: fixed; 
     cursor: pointer; 
     z-index: 1; 
-    width: 72px;
+    width: 71px;
 
     /* campos a serem customizados a cada banca */
     margin: -65px -35px auto;
