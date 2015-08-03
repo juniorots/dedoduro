@@ -30,12 +30,12 @@ $(function () {
      
     // Stacks additional animation
     $('.stackQuadrix li a').hover(function(){
-       if ( $('.stackQuadrix').find('ul').attr('class') == 'openStack') {
+       if ( $('.stackQuadrix').find('ul').attr('class') === 'openStack') {
             $("img",this).animate({width: '71px'}, 100);
             $("span",this).animate({marginRight: '30px'});
         }
     },function(){
-        if ( $('.stackQuadrix').find('ul').attr('class') == 'openStack') {
+        if ( $('.stackQuadrix').find('ul').attr('class') === 'openStack') {
             $("img",this).animate({width: '60px'}, 100);
             $("span",this).animate({marginRight: '0px'});
         }
