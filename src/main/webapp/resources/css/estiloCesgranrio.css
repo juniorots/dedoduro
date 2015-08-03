@@ -1,23 +1,24 @@
 /*
     -x- Customizando Menu da Janela principal -x-
 */
-.fonteQuadrix {
+.fonteCesgranrio {
     font-weight: bold;
     color: #445058;
-    position: relative;
-    display: table-row;
-    text-align: center;
+    margin-left: -15px;
+    /*position: relative;*/
+/*    display: table-row;
+    text-align: center;*/
 }
 
-.stackQuadrix { 
+.stackCesgranrio { 
     position: fixed; 
     display: table;
     
     /* campos a serem customizados a cada banca */
-    margin-top: 340px;
-    padding-left:300px;
+    margin-top: 320px;
+    padding-left:600px;
 }
-.stackQuadrix > img { 
+.stackCesgranrio > img { 
     position: relative; 
     cursor: pointer; 
     z-index: 2;
@@ -25,7 +26,7 @@
     /* campos a serem customizados a cada banca */
     /*margin-top: 25px;*/ 
 }
-.stackQuadrix ul { 
+.stackCesgranrio ul { 
     list-style: none; 
     position: fixed; 
     cursor: pointer; 
@@ -36,30 +37,30 @@
     margin: -65px -35px auto;
 }
 
-.stackQuadrix ul > li > a > img { 
+.stackCesgranrio ul > li > a > img { 
     width: 71px;
     margin-left: -2px;
 }
 
-.stackQuadrix ul li a:link {
+.stackCesgranrio ul li a:link {
     text-decoration: none;
 }
 
-.stackQuadrix ul li { 
+.stackCesgranrio ul li { 
     position: absolute; 
 }
-.stackQuadrix ul li img { 
+.stackCesgranrio ul li img { 
     border: 0; 
 }
-.stackQuadrix ul li span { 
+.stackCesgranrio ul li span { 
     display: none; 
 }
 
-.stackQuadrix .openStack li span:hover {
+.stackCesgranrio .openStack li span:hover {
     color: #ffffff;
 }
 
-.stackQuadrix .openStack li span { 
+.stackCesgranrio .openStack li span { 
     font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
     display:block;
     position:relative;
@@ -87,6 +88,6 @@
 }
  
 /* IE Fixes */
-.stackQuadrix { _position: absolute; }
-.stackQuadrix ul { _z-index:-1; _top:-15px; }
-.stackQuadrix ul li { *right:5px; }
+.stackCesgranrio { _position: absolute; }
+.stackCesgranrio ul { _z-index:-1; _top:-15px; }
+.stackCesgranrio ul li { *right:5px; }
