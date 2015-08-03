@@ -18,7 +18,7 @@ function fecharOutrasCestas( banca ) {
             if ( bancas[i] === '.stackFcc') {
                 $(bancas[i]).find('ul').removeClass('openStack').children('li').animate({top: '72px', left: '-5px'}, closespeed);
                 $(bancas[i]).find('ul > li > a > img').animate({width: '65px'}, 100);
-            } else if ( bancas[i] === '.stackExercito' || bancas[i] === '.stackMarinha') {
+            } else if ( bancas[i] === '.stackExercito' || bancas[i] === '.stackMarinha' || bancas[i] === '.stackAeronautica') {
                 $(bancas[i]).find('ul').removeClass('openStack').children('li').animate({top: '72px', left: '-3px'}, closespeed);
                 $(bancas[i]).find('ul > li > a > img').animate({width: '45px'}, 100);
             } else {
