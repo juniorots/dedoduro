@@ -10,18 +10,19 @@
             <h:form>
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel for="nome" value="Nome: "/>
-                    <p:inputText id="nome" value="#{usuario.nome}"/>
+                    <p:inputText id="nome" value="#{usuarioMB.usuario.nome}" required="true" requiredMessage="Campo obrigatório"/>
                     
                     <p:outputLabel for="email" value="E-mail: "/>
-                    <p:inputText id="email" value="#{usuario.email}"/>
+                    <p:inputText id="email" value="#{usuarioMB.usuario.email}" required="true" requiredMessage="Campo obrigatório"/>
                     
                     <p:outputLabel for="senha" value="Senha: "/>
-                    <p:password id="senha" value="#{usuario.senha}" feedback="false"
-                                promptLabel="Análise da senha" weakLabel="Fraca"
-                                goodLabel="Boa" strongLabel="Forte"/>
+                    <p:password id="senha" value="#{usuarioMB.usuario.senha}" feedback="false"
+                                promptLabel="Nível de segurança" weakLabel="Fraca"
+                                goodLabel="Boa" strongLabel="Forte" required="true" requiredMessage="Campo obrigatório"/>
                     
                     <p:outputLabel for="dtNascimento" value="Data de Nascimento: "/>
-                    <p:calendar id="dtNascimento" value="#{usuario.dtNascimento}" locale="pt" navigator="true" pattern="dd/MM/yyyy" />
+                    <p:calendar id="dtNascimento" value="#{usuarioMB.usuario.dtNascimento}" locale="pt" navigator="true" 
+                                pattern="dd/MM/yyyy" required="true" requiredMessage="Campo obrigatório"/>
                                         
                 </h:panelGrid>
             </h:form>
