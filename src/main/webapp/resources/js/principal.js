@@ -13,7 +13,7 @@ function fecharOutrasCestas( banca ) {
     
     for (i = 0; i < bancas.length; i++) {
         if ( (bancas[i] !== banca) && ( $(bancas[i]).find('ul').attr('class') === 'openStack' ) ) {
-            $(bancas[i]).find('ul').removeClass('openStack').children('li').animate({top: '72px', left: '-10px'}, closespeed);
+            $(bancas[i]).find('ul').removeClass('openStack').children('li').animate({top: '71px', left: '-10px'}, closespeed);
             
             if ( bancas[i] === '.stackFcc') {
                 $(bancas[i]).find('ul').removeClass('openStack').children('li').animate({top: '72px', left: '-5px'}, closespeed);

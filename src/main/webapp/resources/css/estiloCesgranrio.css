@@ -4,7 +4,7 @@
 .fonteCesgranrio {
     font-weight: bold;
     color: #445058;
-    margin-left: -15px;
+    margin-left: -20px;
     /*position: relative;*/
 /*    display: table-row;
     text-align: center;*/
@@ -16,7 +16,7 @@
     
     /* campos a serem customizados a cada banca */
     margin-top: 320px;
-    padding-left:600px;
+    padding-left:550px;
 }
 .stackCesgranrio > img { 
     position: relative; 

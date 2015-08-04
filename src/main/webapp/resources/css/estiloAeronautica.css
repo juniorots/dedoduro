@@ -4,7 +4,7 @@
 .fonteAeronautica {
     font-weight: bold;
     color: #445058;
-    margin-left: -20px;
+    margin-left: -25px;
 }
 
 .stackAeronautica { 
@@ -13,7 +13,7 @@
     
     /* campos a serem customizados a cada banca */
     margin-top: 290px;
-    padding-left:1050px;
+    padding-left:1000px;
 }
 .stackAeronautica > img { 
     position: relative; 

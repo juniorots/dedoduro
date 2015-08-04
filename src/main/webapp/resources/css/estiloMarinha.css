@@ -4,9 +4,7 @@
 .fonteMarinha {
     font-weight: bold;
     color: #445058;
-    position: relative;
-    display: table-row;
-    text-align: center;
+    margin-left: -5px;
 }
 
 .stackMarinha { 
@@ -15,7 +13,7 @@
     
     /* campos a serem customizados a cada banca */
     margin-top: 300px;
-    padding-left:900px;
+    padding-left:850px;
 }
 .stackMarinha > img { 
     position: relative; 

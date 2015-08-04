@@ -16,7 +16,7 @@ $(function () {
                 vertical = vertical + 55;
                 horizontal = (horizontal+.75)*2;
             });
-            $el.next().animate({top: '405px', left: '955px'}, openspeed).addClass('openStack')
+            $el.next().animate({top: '403px', left: '905px'}, openspeed).addClass('openStack')
                 .find('li a>img').animate({width: '35px', marginLeft: '0px'}, openspeed);
             $el.animate({paddingTop: '0'});
             fecharOutrasCestas('.stackMarinha');
