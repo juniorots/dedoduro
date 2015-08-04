@@ -9,6 +9,7 @@ package br.com.dedoduro.modelo;
 import br.com.dedoduro.framework.persistence.DomainObject;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -30,10 +33,17 @@ public class Usuario extends DomainObject {
     private Long codigoUsuario;
     
     @NotNull
+    private String nome;
+    
+    @NotNull
     private String email;
     
     @NotNull
     private String senha;
+    
+    @Temporal(DATE)
+    @NotNull
+    private Date dtNascimento;
     
     @NotNull
     private String receberEmail; // S - Sim; N - Nao;
@@ -48,6 +58,22 @@ public class Usuario extends DomainObject {
 
     public void setCodigoUsuario(Long codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDtNascimento() {
+        return dtNascimento;
+    }
+
+    public void setDtNascimento(Date dtNascimento) {
+        this.dtNascimento = dtNascimento;
     }
 
     public String getReceberEmail() {
