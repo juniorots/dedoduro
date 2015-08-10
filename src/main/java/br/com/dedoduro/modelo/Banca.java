@@ -27,9 +27,12 @@ public class Banca {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigoBanca;
     
+    private String nomeBanca;
+    private String urlImagem;
+    
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinColumn(name = "codigoLink")
-    private Collection<Link> links;
+    @JoinColumn(name = "codigoConcurso")
+    private Collection<Concurso> concursos;
 
     public Long getCodigoBanca() {
         return codigoBanca;
@@ -39,16 +42,31 @@ public class Banca {
         this.codigoBanca = codigoBanca;
     }
 
-    public Collection<Link> getLinks() {
-        if (links == null) {
-            links = new ArrayList();
+    public Collection<Concurso> getConcursos() {
+        if (concursos == null) {
+            concursos = new ArrayList();
         }
-        return links;
+        return concursos;
+    }
+    
+    public void setConcursos(Collection<Concurso> concursos) {
+        this.concursos = concursos;
     }
 
-    public void setLinks(Collection<Link> links) {
-        this.links = links;
+    public String getNomeBanca() {
+        return nomeBanca;
     }
 
+    public void setNomeBanca(String nomeBanca) {
+        this.nomeBanca = nomeBanca;
+    }
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
     
 }

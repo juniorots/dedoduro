@@ -16,21 +16,24 @@ import javax.persistence.Id;
  * @author Jose Alves
  */
 @Entity
-public class Link {
+public class Concurso {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigoLink;
+    private Long codigoConcurso;
     
+    private String nomeConcurso;
+    private String urlImagem;
     private String url;
+    
     private int contadorLogico;
 
-    public Long getCodigoLink() {
-        return codigoLink;
+    public Long getCodigoConcurso() {
+        return codigoConcurso;
     }
 
-    public void setCodigoLink(Long codigoLink) {
-        this.codigoLink = codigoLink;
+    public void setCodigoConcurso(Long codigoConcurso) {
+        this.codigoConcurso = codigoConcurso;
     }
 
     public String getUrl() {
@@ -48,5 +51,20 @@ public class Link {
     public void setContadorLogico(int contadorLogico) {
         this.contadorLogico = contadorLogico;
     }
-    
+
+    public String getNomeConcurso() {
+        return nomeConcurso;
+    }
+
+    public void setNomeConcurso(String nomeConcurso) {
+        this.nomeConcurso = nomeConcurso;
+    }
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
 }

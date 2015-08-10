@@ -38,6 +38,10 @@ public class UsuarioMB implements Serializable {
     }
 
     public Collection<Usuario> getListaUsuario() {
+        if (listaUsuario == null) {
+            return new ArrayList<Usuario>();
+        }
+    
         return listaUsuario;
     }
 
