@@ -24,6 +24,20 @@
     border-bottom:3px solid #EA0000;
 }
 
+.fontePadrao {
+    color: #445058;
+}
+
+#tituloTela{
+    display: table;
+    width: 100%;
+    padding-bottom: 25px;
+    color: #445058;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .fonteNegrito{
     font-weight: bold;
 }

@@ -52,4 +52,11 @@ public class UsuarioMB implements Serializable {
         // TO-DO implementar...
     }
     
+    /**
+     * Implementar registro do usuario
+     */
+    public void registrarUsuario() {
+        
+    }
+    
 }

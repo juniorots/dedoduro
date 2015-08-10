@@ -8,21 +8,27 @@
     <ui:composition template="/WEB-INF/template/mestre.xhtml">
         <ui:define name="centro">
             <h:form>
+                <span id="tituloTela">Cadastrar novo usuário</span>
                 <h:panelGrid columns="2" cellpadding="2">
-                    <p:outputLabel for="nome" value="Nome: "/>  
+                    <p:outputLabel for="nome" value="Nome: " styleClass="fontePadrao"/>  
                     <p:inputText id="nome" value="#{usuarioMB.usuario.nome}" required="true" requiredMessage="Campo obrigatório" maxlength="70" size="70"/>
                     
-                    <p:outputLabel for="email" value="E-mail: "/>
+                    <p:outputLabel for="email" value="E-mail: " styleClass="fontePadrao"/>
                     <p:inputText id="email" value="#{usuarioMB.usuario.email}" required="true" requiredMessage="Campo obrigatório" maxlength="70" size="70"/>
                     
-                    <p:outputLabel for="senha" value="Senha: "/>
+                    <p:outputLabel for="senha" value="Senha: " styleClass="fontePadrao"/>
                     <p:password id="senha" value="#{usuarioMB.usuario.senha}" feedback="true"
                                 promptLabel="Nível da senha" weakLabel="Fraca"
                                 goodLabel="Boa" strongLabel="Forte" required="true" requiredMessage="Campo obrigatório" maxlength="50" size="30"/>
                     
-                    <p:outputLabel for="dtNascimento" value="Data de Nascimento: "/>
+                    <p:outputLabel for="dtNascimento" value="Data de Nascimento: " styleClass="fontePadrao"/>
                     <p:calendar id="dtNascimento" value="#{usuarioMB.usuario.dtNascimento}" locale="pt" navigator="true"
                                 pattern="dd/MM/yyyy" required="true" requiredMessage="Campo obrigatório" maxlength="10" size="10"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid cellpadding="10" cellspacing="5" columns="2" style="margin-left: 20px">
+                    <p:commandButton value="Limpar" id="btnLimpar" type="reset" ajax="false"/>
+                    <p:commandButton value="Salvar" id="btnSalvar" actionListener="#{usuarioMB.registrarUsuario}" ajax="false" icon="ui-icon-disk"/>
                 </h:panelGrid>
             </h:form>
         </ui:define>
