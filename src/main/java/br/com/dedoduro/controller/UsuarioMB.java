@@ -5,12 +5,17 @@
  */
 package br.com.dedoduro.controller;
 
+import br.com.dedoduro.base.UsuarioDAO;
 import br.com.dedoduro.modelo.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import lombok.Cleanup;
 
 /**
  *
@@ -53,14 +58,17 @@ public class UsuarioMB implements Serializable {
      * Responsavel por persistir as informacoes digitadas na base
      */
     public void salvarUsuario() {
-        // TO-DO implementar...
-    }
-    
-    /**
-     * Implementar registro do usuario
-     */
-    public void registrarUsuario() {
         
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        UsuarioDAO dao = new UsuarioDAO(entityManager);
+        Usuario usInserido = dao.insert( getUsuario() );
+        entityManager.getTransaction().commit();
     }
     
 }

@@ -45,8 +45,7 @@ public class Usuario extends DomainObject {
     @NotNull
     private Date dtNascimento;
     
-    @NotNull
-    private String receberEmail; // S - Sim; N - Nao;
+    private String receberEmail = "N"; // S - Sim; N - Nao [DEFAULT];
     
     @ManyToMany (fetch=FetchType.LAZY)
     @JoinColumn(name = "codigoBanca")

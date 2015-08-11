@@ -26,6 +26,7 @@
 
 .fontePadrao {
     color: #445058;
+    font-family: Montserrat, sans-serif;
 }
 
 #tituloTela{
@@ -36,6 +37,7 @@
     font-size: 35px;
     font-weight: bold;
     text-align: center;
+    font-family: Montserrat, sans-serif;
 }
 
 .fonteNegrito{
