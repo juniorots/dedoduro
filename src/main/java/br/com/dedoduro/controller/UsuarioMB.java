@@ -11,12 +11,14 @@ import br.com.dedoduro.util.Util;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import lombok.Cleanup;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -71,6 +73,14 @@ public class UsuarioMB implements Serializable {
         getUsuario().setSenha( Util.cifrar( getUsuario().getSenha() ) );
         Usuario usInserido = dao.insert( getUsuario() );
         entityManager.getTransaction().commit();
+        
+        FacesMessage mensagem = null;
+        if ( !Util.isEmpty( usInserido.getCodigoUsuario() ) ) {
+            mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Usuário cadastrado com sucesso.");
+        } else {
+            mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Status", "Falha no cadastro. Operação cancelada.");
+        }
+        RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
     }
     
 }

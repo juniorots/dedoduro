@@ -6,6 +6,7 @@
 
 package br.com.dedoduro.util;
 
+import java.util.Collection;
 import org.apache.commons.codec.binary.Base64;
 
 /**
@@ -20,5 +21,22 @@ public class Util {
     
     public static String descifrar(String codigo) {
         return new String ( new Base64().decode(codigo) );
+    }
+    
+    /**
+     * Verificando objeto nulo
+     * @param obj
+     * @return 
+     */
+    public static boolean isEmpty(Object obj) {
+        if (obj == null) {
+            return true;
+        } else if (obj instanceof String && ((String) obj).equals("") ) {
+            return true;
+        } else if (obj instanceof Collection && ((Collection) obj).size() == 0)  {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
