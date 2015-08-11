@@ -7,12 +7,34 @@
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/WEB-INF/template/mestre.xhtml">
         <ui:define name="centro">
-            <h:form>
+            <h:form id="form">
+                 <p:growl id="msgs" showDetail="true" />   
                  <span id="tituloTela">Todos os concursos dedurados!</span>
                  <p:accordionPanel>
-                     <p:ajax event="tabChange" listener="#{tabbedView.onTabChange}" update=":form:msgs" />
-                     <p:ajax event="tabClose" listener="#{tabbedView.onTabClose}" update=":form:msgs" />
-                     
+                     <p:ajax event="tabChange" listener="#{bancaMB.onTabChange}" update=":form:msgs" />
+                     <p:ajax event="tabClose" listener="#{bancaMB.onTabClose}" update=":form:msgs" />
+
+                     <p:tab title="Teste 01">
+                         <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage name="mpog.jpg" library="images"/>
+                            <h:outputText value="Ministério do Planejamento e Orçamento"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage name="mec.jpg" library="images"/>
+                            <h:outputText value="Ministério da Educação"/>
+                        </h:panelGrid>
+                     </p:tab>
+                     <p:tab title="Teste 02">
+                        <h:panelGrid columns="2" cellpadding="10">
+                             <p:graphicImage name="mec.jpg" library="images"/>
+                            <h:outputText value="Ministério da Educação"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage name="mpog.jpg" library="images"/>
+                            <h:outputText value="Ministério do Planejamento e Orçamento"/>
+                        </h:panelGrid>
+                     </p:tab>
+                     <!--
                      <ui:repeat value="#{bancaMB.listaBanca}" var="item">
                          <p:tab title="#{item.nomeBanca}">
                              <ui:repeat value="#{item.concursos}" var="concurso">
@@ -23,6 +45,7 @@
                              </ui:repeat>
                         </p:tab>
                      </ui:repeat>
+                     -->
                  </p:accordionPanel>
             </h:form>
         </ui:define>

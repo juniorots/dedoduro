@@ -105,6 +105,7 @@
 }
 #cssmenu ul ul li {
   height: 0;
+  z-index: 1;
   -webkit-transition: all .25s ease;
   -moz-transition: all .25s ease;
   -ms-transition: all .25s ease;
@@ -238,7 +239,7 @@
     float:right;
     font-size:12px;
     padding-top: 0px;
-    z-index: 0;
+    z-index: 1;
 }
 
 #loginButton { 
