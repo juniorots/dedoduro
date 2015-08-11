@@ -7,12 +7,14 @@
 package br.com.dedoduro.util;
 
 import br.com.dedoduro.modelo.Usuario;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Date;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.codec.binary.Base64;
 
 /**
  *
@@ -21,11 +23,19 @@ import org.apache.commons.codec.binary.Base64;
 public class Util {
     
     public static String cifrar(String texto) {
-        return new Base64().encodeToString( texto.getBytes() );
-    }
-    
-    public static String descifrar(String codigo) {
-        return new String ( new Base64().decode(codigo) );
+        StringBuilder sb = new StringBuilder();
+        try {
+            MessageDigest algoritmo = MessageDigest.getInstance("SHA-256");
+            byte message[] = algoritmo.digest(texto.getBytes("ISO-8859-1"));
+            for (byte b : message) {
+                sb.append( String.format("%02X",0xFF & b) );
+            }
+        } catch (NoSuchAlgorithmException ae) {
+            ae.printStackTrace();
+        } catch (UnsupportedEncodingException ue) {
+            ue.printStackTrace();
+        }
+        return sb.toString();
     }
     
     /**
