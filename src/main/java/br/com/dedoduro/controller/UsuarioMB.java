@@ -7,6 +7,7 @@ package br.com.dedoduro.controller;
 
 import br.com.dedoduro.base.UsuarioDAO;
 import br.com.dedoduro.modelo.Usuario;
+import br.com.dedoduro.util.Util;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -67,6 +68,7 @@ public class UsuarioMB implements Serializable {
         entityManager.getTransaction().begin();
         
         UsuarioDAO dao = new UsuarioDAO(entityManager);
+        getUsuario().setSenha( Util.cifrar( getUsuario().getSenha() ) );
         Usuario usInserido = dao.insert( getUsuario() );
         entityManager.getTransaction().commit();
     }
