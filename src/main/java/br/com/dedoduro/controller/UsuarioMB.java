@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.dedoduro.controller;
 
 import br.com.dedoduro.base.UsuarioDAO;
@@ -14,6 +9,7 @@ import java.util.Collection;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -62,6 +58,17 @@ public class UsuarioMB implements Serializable {
      */
     public void salvarUsuario() {
         
+        FacesMessage mensagem = null;
+        
+        if ( !continuarRegistro( getUsuario() ) ) {
+//            mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Status", "Falha no cadastro. E-mail já registrado no sistema.");
+//            RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
+            mensagem = new FacesMessage("Falha no cadastro. E-mail já registrado no sistema.");
+            FacesContext.getCurrentInstance().addMessage(null, mensagem);
+            
+            return;
+        }
+        
         @Cleanup
         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
         
@@ -74,7 +81,6 @@ public class UsuarioMB implements Serializable {
         Usuario usInserido = dao.insert( getUsuario() );
         entityManager.getTransaction().commit();
         
-        FacesMessage mensagem = null;
         if ( !Util.isEmpty( usInserido.getCodigoUsuario() ) ) {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Usuário cadastrado com sucesso.");
             Util.gravarUsuarioSessao( usInserido );
@@ -85,4 +91,26 @@ public class UsuarioMB implements Serializable {
         RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
     }
     
+    /**
+     * Responsavel por verificar se o e-mail ja nao esta inserido na base de dados
+     * @param usuario
+     * @return 
+     */
+    private boolean continuarRegistro(Usuario usuario) {
+        
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        UsuarioDAO dao = new UsuarioDAO(entityManager);
+        
+        if ( !Util.isEmpty( dao.findByStringField("email", usuario.getEmail(), true, 1, 1) ) ) {
+            return false;
+        }
+        
+        return true;
+    }
 }
