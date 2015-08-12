@@ -61,11 +61,8 @@ public class UsuarioMB implements Serializable {
         FacesMessage mensagem = null;
         
         if ( !continuarRegistro( getUsuario() ) ) {
-//            mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Status", "Falha no cadastro. E-mail já registrado no sistema.");
-//            RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
-            mensagem = new FacesMessage("Falha no cadastro. E-mail já registrado no sistema.");
+            mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Falha no cadastro. E-mail já registrado no sistema.", "");
             FacesContext.getCurrentInstance().addMessage(null, mensagem);
-            
             return;
         }
         
