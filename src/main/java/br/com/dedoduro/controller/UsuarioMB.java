@@ -78,6 +78,7 @@ public class UsuarioMB implements Serializable {
         if ( !Util.isEmpty( usInserido.getCodigoUsuario() ) ) {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Usuário cadastrado com sucesso.");
             Util.gravarUsuarioSessao( usInserido );
+            usuario = new Usuario();
         } else {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Status", "Falha no cadastro. Operação cancelada.");
         }
