@@ -6,6 +6,7 @@ import br.com.dedoduro.util.Util;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -104,7 +105,7 @@ public class UsuarioMB implements Serializable {
         
         UsuarioDAO dao = new UsuarioDAO(entityManager);
         
-        if ( !Util.isEmpty( dao.findByStringField("email", usuario.getEmail(), true, 1, 1) ) ) {
+        if ( !Util.isEmpty( dao.findByStringField("email", usuario.getEmail(), true, 0, 1) ) ) {
             return false;
         }
         
@@ -115,6 +116,31 @@ public class UsuarioMB implements Serializable {
      * Credenciando usuario
      */
     public void validarUsuario() {
+
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
         
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        UsuarioDAO dao = new UsuarioDAO(entityManager);
+        
+        HashMap<String, String> campos = new HashMap<>();
+        campos.put("email", getUsuario().getEmail());
+        campos.put("senha", Util.cifrar( getUsuario().getSenha() ) );
+
+        ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);
+        
+        if (!Util.isEmpty( retorno ) ) {
+            Usuario retornoUsuario = retorno.get(0);
+            retornoUsuario.setNomeTitulo( retornoUsuario.getNome() );
+            Util.gravarUsuarioSessao( retornoUsuario );
+            setUsuario( retornoUsuario );
+        } else {
+            getUsuario().setEmail("");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "E-mail ou Senha inválidos.") );
+        }
     }
 }

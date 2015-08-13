@@ -24,6 +24,11 @@ public class Util {
     
     public static String cifrar(String texto) {
         StringBuilder sb = new StringBuilder();
+        
+        if ( isEmpty( texto )) {
+            return "";
+        }
+        
         try {
             MessageDigest algoritmo = MessageDigest.getInstance("SHA-256");
             byte message[] = algoritmo.digest(texto.getBytes("ISO-8859-1"));
@@ -63,6 +68,7 @@ public class Util {
         HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
         sessao.setAttribute( "CODIGO_USUARIO", usuario.getCodigoUsuario() );
         sessao.setAttribute( "NOME_USUARIO", usuario.getNome() );
+        sessao.setAttribute( "NOME_TITULO", usuario.getNomeTitulo() );
         sessao.setAttribute( "DT_NASCIMENTO_USUARIO", usuario.getDtNascimento() );
     }
     
@@ -78,6 +84,7 @@ public class Util {
             usuario = new Usuario();
             usuario.setCodigoUsuario( (Long) sessao.getAttribute("CODIGO_USUARIO") );
             usuario.setNome( (String) sessao.getAttribute("NOME_USUARIO") );
+            usuario.setNomeTitulo( (String) sessao.getAttribute("NOME_TITULO") );
             usuario.setDtNascimento( (Date) sessao.getAttribute("DT_NASCIMENTO_USUARIO") );
         }
         

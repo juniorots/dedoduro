@@ -6,7 +6,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <h:outputStylesheet library="css" name="styles.css"/>
+        <h:outputStylesheet library="css" name="estilo.css"/>
         <h:outputScript library="js" name="script.js"/>
+        
+        <h:outputStylesheet>
+            <!--
+                Reposicionando balao de mensagem flutuante...
+            -->
+            .ui-growl {
+                top: 10%;
+                left: 58%;
+            }
+        </h:outputStylesheet>
     </h:head>
     <h:body>
         <div id='cssmenu'>
@@ -27,16 +38,20 @@
                     <div style="clear:both"></div>
                     <div id="loginBox">                
                         <h:form id="loginForm">
+                            <p:growl id="growl" showDetail="true" /> 
                             <fieldset id="body">
                                 <fieldset>
                                     <label for="email">E-mail</label>
-                                    <input type="text" name="email" id="email" value="#{usuarioMB.usuario.email}" />
+                                    <p:inputText id="email" value="#{usuarioMB.usuario.email}" required="true" 
+                                                 requiredMessage="Campo obrigatório" maxlength="70" tabindex="1" />
                                 </fieldset>
                                 <fieldset>
                                     <label for="password">Senha</label>
-                                    <input type="password" name="senha" id="senha" value="#{usuarioMB.usuario.senha}"/>
+                                    <p:password id="senha" value="#{usuarioMB.usuario.senha}" required="true" 
+                                                requiredMessage="Campo obrigatório" maxlength="50" tabindex="2"/>
                                 </fieldset>
-                                <p:commandButton value="Entrar" id="login" actionListener="#{usuarioMB.validarUsuario}" ajax="false" />
+                                <p:commandButton value="Entrar" id="login" actionListener="#{usuarioMB.validarUsuario}" 
+                                                 ajax="false" update="growl" style="width: 50%;" />
                             </fieldset>
                             <span><a href="#">Esqueci minha senha</a></span>
                         </h:form>
@@ -44,7 +59,7 @@
                 </div>
            </li>
            <li style="float: right;">
-            <h:outputText value="#{usuarioMB.usuario.nome}" class="fonteTituloMenu"/>
+            <h:outputText value="#{usuarioMB.usuario.nomeTitulo}" class="fonteTituloMenu"/>
            </li> 
         </ul>
             

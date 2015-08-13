@@ -98,3 +98,8 @@ body {
     margin: 0 auto;
     padding-bottom: 10px;
 }
+
+.dimensionarBalao {
+    left: 58%; 
+    top: 20%;
+}
