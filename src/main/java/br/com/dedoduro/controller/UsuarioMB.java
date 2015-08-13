@@ -110,4 +110,11 @@ public class UsuarioMB implements Serializable {
         
         return true;
     }
+    
+    /**
+     * Credenciando usuario
+     */
+    public void validarUsuario() {
+        
+    }
 }

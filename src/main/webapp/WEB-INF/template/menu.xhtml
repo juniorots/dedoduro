@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <h:outputStylesheet library="css" name="styles.css"/>
@@ -25,23 +26,26 @@
                     <a href="#" id="loginButton"><span>Entrar</span><em></em></a>
                     <div style="clear:both"></div>
                     <div id="loginBox">                
-                        <form id="loginForm">
+                        <h:form id="loginForm">
                             <fieldset id="body">
                                 <fieldset>
                                     <label for="email">E-mail</label>
-                                    <input type="text" name="email" id="email" />
+                                    <input type="text" name="email" id="email" value="#{usuarioMB.usuario.email}" />
                                 </fieldset>
                                 <fieldset>
                                     <label for="password">Senha</label>
-                                    <input type="password" name="senha" id="senha" />
+                                    <input type="password" name="senha" id="senha" value="#{usuarioMB.usuario.senha}"/>
                                 </fieldset>
-                                <input type="submit" id="login" value="Entrar" />
+                                <p:commandButton value="Entrar" id="login" actionListener="#{usuarioMB.validarUsuario}" ajax="false" />
                             </fieldset>
                             <span><a href="#">Esqueci minha senha</a></span>
-                        </form>
+                        </h:form>
                     </div>
                 </div>
            </li>
+           <li style="float: right;">
+            <h:outputText value="#{usuarioMB.usuario.nome}" class="fonteTituloMenu"/>
+           </li> 
         </ul>
             
         </div>

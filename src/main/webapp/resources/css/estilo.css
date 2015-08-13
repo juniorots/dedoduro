@@ -40,6 +40,17 @@
     font-family: Montserrat, sans-serif;
 }
 
+.fonteTituloMenu{
+    font-family: Montserrat, sans-serif;
+    color: #dddddd;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding:17px 40px 9px 15px;
+    display: block;
+    text-transform: uppercase;
+}
+
 .fonteNegrito{
     font-weight: bold;
 }
