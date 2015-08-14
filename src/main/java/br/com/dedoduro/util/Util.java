@@ -10,6 +10,7 @@ import br.com.dedoduro.modelo.Usuario;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.faces.context.ExternalContext;
@@ -21,6 +22,18 @@ import javax.servlet.http.HttpSession;
  * @author Jose Alves
  */
 public class Util {
+    
+    /**
+     * Capta a data no formato
+     * dd/MM/yyyy
+     * @return 
+     */
+    public static String captarDataFormatada ( Date data ) {
+        StringBuilder sb = new StringBuilder();
+        SimpleDateFormat formato  = new SimpleDateFormat("dd/MM/yyyy");        
+        sb.append( formato.format(data) );
+        return sb.toString();
+    }
     
     public static String cifrar(String texto) {
         StringBuilder sb = new StringBuilder();
@@ -40,6 +53,31 @@ public class Util {
         } catch (UnsupportedEncodingException ue) {
             ue.printStackTrace();
         }
+        return sb.toString();
+    }
+    
+    /**
+     * Dever-se-a ser utilizado para recuperacao de senha, quando o usuario solicitar tal funcionalidade
+     * @param texto
+     * @return 
+     */
+    public static String cifrarRecuperacao (String texto) {
+        StringBuilder sb = new StringBuilder();
+        
+        if ( isEmpty( texto )) {
+            return "";
+        }
+        try {
+            MessageDigest algoritmo = MessageDigest.getInstance("MD5");
+            byte message[] = algoritmo.digest(texto.getBytes("ISO-8859-1"));
+            
+            sb.append(message);
+        }  catch (NoSuchAlgorithmException ae) {
+            ae.printStackTrace();
+        } catch (UnsupportedEncodingException ue) {
+            ue.printStackTrace();
+        }
+        
         return sb.toString();
     }
     

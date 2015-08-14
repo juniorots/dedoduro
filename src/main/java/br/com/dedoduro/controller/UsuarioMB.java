@@ -175,6 +175,40 @@ public class UsuarioMB implements Serializable {
     }
     
     /**
+     * Tratando da solicitacao de recuperacao de conta
+     */
+    public void recuperarConta() {
+        
+        FacesMessage mensagem = null;
+        
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        UsuarioDAO dao = new UsuarioDAO(entityManager);
+        
+        HashMap<String, String> campos = new HashMap<>();
+        campos.put("email", getUsuario().getEmail() );
+        campos.put("dtNascimento", Util.captarDataFormatada( getUsuario().getDtNascimento() ) );
+        
+        ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);
+        
+        if (!Util.isEmpty( retorno ) ) {
+            
+            // TO-DO: Programar envio de e-mail...
+            
+            mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Uma senha automática fora enviado para o e-mail informado, após a sua válidação procure alterá-la.");
+        } else {
+            mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Informações inexistentes em nossa base de dados, favor tentar novamente.");            
+        }
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
+    }
+    
+    /**
      * Tratando do fechamento da sessao aberta perlo usuario
      */
     public void sairSistema() {

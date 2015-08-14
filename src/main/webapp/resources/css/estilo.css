@@ -29,6 +29,15 @@
     font-family: Montserrat, sans-serif;
 }
 
+.fonteRecuperacao {
+    display: table;
+    width: 100%;
+    color: #445058;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    padding-left: 2%;
+}
+
 #tituloTela{
     display: table;
     width: 100%;
@@ -66,6 +75,18 @@
 
 .linkTituloMenu:hover{
     color: #ffffff;
+}
+
+.linkJanelaLogin {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px !important;
+    color:#3a454d !important;
+}
+
+.linkJanelaLogin:hover {
+    color: #6A5ACD !important;
+    /*color: #4682B4 !important;*/
 }
 
 .fonteNegrito{
