@@ -59,6 +59,31 @@ public class UsuarioMB implements Serializable {
     }
 
     /**
+     * Responsavel por alterar as informacoes do usuario logado
+     */
+    public void alterarUsuario() {
+        FacesMessage mensagem = null;
+        
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        UsuarioDAO dao = new UsuarioDAO(entityManager);
+        getUsuario().setSenha( Util.cifrar( getUsuario().getSenha() ) );
+        Usuario usAlterado = dao.update( getUsuario() );
+        entityManager.getTransaction().commit();
+        
+        mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Dados alterados com sucesso.");
+        Util.gravarUsuarioSessao( usAlterado );
+        setUsuario ( Util.captarUsuarioSessao() );
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
+    }
+    
+    /**
      * Responsavel por persistir as informacoes digitadas na base
      */
     public void salvarUsuario() {
@@ -86,7 +111,7 @@ public class UsuarioMB implements Serializable {
         if ( !Util.isEmpty( usInserido.getCodigoUsuario() ) ) {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Usuário cadastrado com sucesso.");
             Util.gravarUsuarioSessao( usInserido );
-            usuario = new Usuario();
+            usuario = Util.captarUsuarioSessao();
         } else {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Status", "Falha no cadastro. Operação cancelada.");
         }

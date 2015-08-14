@@ -5,12 +5,18 @@
        xmlns:p="http://primefaces.org/ui"
        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
+        <p:growl id="growl" showDetail="true" /> 
         <div id='cssmenu'>
         <ul>
            <li class='active'><span class="iconeMenu"/><a href='#'>Menu</a>
                <ul>
                    <li><a href="#{request.contextPath}/jsp/principal.xhtml">Início</a></li>
-                   <li><a href="#{request.contextPath}/jsp/cadastrarUsuario.xhtml">Cadastrar-se</a></li>
+                   <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+                        <li><a href="#{request.contextPath}/jsp/cadastrarUsuario.xhtml">Cadastrar-se</a></li>
+                   </c:if>
+                   <c:if test="#{not empty usuarioMB.usuario.codigoUsuario}">
+                        <li><a href="#{request.contextPath}/jsp/cadastrarUsuario.xhtml">Altere seus dados</a></li>
+                   </c:if>
                    <li><a href="#{request.contextPath}/jsp/todosConcursos.xhtml">Todos os dedurados!</a></li>
                </ul>
            </li>
@@ -26,7 +32,6 @@
                          <div style="clear:both"></div>
                          <div id="loginBox">                
                              <h:form id="loginForm">
-                                 <p:growl id="growl" showDetail="true" /> 
                                  <fieldset id="body">
                                      <fieldset>
                                          <label for="email">E-mail</label>
