@@ -99,7 +99,7 @@ body {
     padding-bottom: 10px;
 }
 
-.dimensionarBalao {
-    left: 58%; 
-    top: 20%;
+.ui-growl {
+    top: 10%;
+    right: 20%;
 }
