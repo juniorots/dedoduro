@@ -25,13 +25,17 @@ import org.primefaces.context.RequestContext;
 @RequestScoped
 public class UsuarioMB implements Serializable {
 
-    private Usuario usuario = new Usuario();
+    private Usuario usuario= null;
     private Collection<Usuario> listaUsuario = new ArrayList<>();
     
     /**
      * Creates a new instance of UsuarioMB
      */
     public UsuarioMB() {
+        usuario = Util.captarUsuarioSessao();
+        if ( Util.isEmpty( getUsuario() ) ) {
+            usuario = new Usuario();
+        }
     }
 
     public Usuario getUsuario() {
@@ -138,9 +142,16 @@ public class UsuarioMB implements Serializable {
             Util.gravarUsuarioSessao( retornoUsuario );
             setUsuario( retornoUsuario );
         } else {
-            getUsuario().setEmail("");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "E-mail ou Senha inválidos.") );
         }
+    }
+    
+    /**
+     * Tratando do fechamento da sessao aberta perlo usuario
+     */
+    public void sairSistema() {
+        usuario = new Usuario();
+        Util.gravarUsuarioSessao(usuario);
     }
 }

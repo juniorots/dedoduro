@@ -51,6 +51,23 @@
     text-transform: uppercase;
 }
 
+.linkTituloMenu{
+    font-family: Montserrat, sans-serif;
+    color: #dddddd;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 17px 40px 9px 10px;
+    display: block;
+    text-transform: uppercase;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.linkTituloMenu:hover{
+    color: #ffffff;
+}
+
 .fonteNegrito{
     font-weight: bold;
 }

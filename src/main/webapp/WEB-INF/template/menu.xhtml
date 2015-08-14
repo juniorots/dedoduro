@@ -3,12 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
        xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h:head>
-        <h:outputStylesheet library="css" name="styles.css"/>
-        <h:outputStylesheet library="css" name="estilo.css"/>
-        <h:outputScript library="js" name="script.js"/>
-    </h:head>
+       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <div id='cssmenu'>
         <ul>
@@ -19,37 +14,52 @@
                    <li><a href="#{request.contextPath}/jsp/todosConcursos.xhtml">Todos os dedurados!</a></li>
                </ul>
            </li>
-           <li style='padding-top: 9px; float: right;'>
-               <!--
-                Tratando janela de login
-                -->                    
-                <div id="loginContainer">
-                    <a href="#" id="loginButton"><span>Entrar</span><em></em></a>
-                    <div style="clear:both"></div>
-                    <div id="loginBox">                
-                        <h:form id="loginForm">
-                            <p:growl id="growl" showDetail="true" /> 
-                            <fieldset id="body">
-                                <fieldset>
-                                    <label for="email">E-mail</label>
-                                    <p:inputText id="email" value="#{usuarioMB.usuario.email}" required="true" 
-                                                 requiredMessage="Campo obrigatório" maxlength="70" tabindex="1" />
-                                </fieldset>
-                                <fieldset>
-                                    <label for="password">Senha</label>
-                                    <p:password id="senha" value="#{usuarioMB.usuario.senha}" required="true" 
-                                                requiredMessage="Campo obrigatório" maxlength="50" tabindex="2"/>
-                                </fieldset>
-                                <p:commandButton value="Entrar" id="login" actionListener="#{usuarioMB.validarUsuario}" 
-                                                 ajax="false" update="growl" style="width: 50%;" />
-                            </fieldset>
-                            <span><a href="#">Esqueci minha senha</a></span>
-                        </h:form>
-                    </div>
-                </div>
-           </li>
+            
+           <!-- USUARIO NAO IDENTIFICADO -->
+           <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+                <li style='padding-top: 9px; float: right;'>
+                    <!--
+                     Tratando janela de login
+                     -->                    
+                     <div id="loginContainer" >
+                         <a href="#" id="loginButton"><span>Entrar</span><em></em></a>
+                         <div style="clear:both"></div>
+                         <div id="loginBox">                
+                             <h:form id="loginForm">
+                                 <p:growl id="growl" showDetail="true" /> 
+                                 <fieldset id="body">
+                                     <fieldset>
+                                         <label for="email">E-mail</label>
+                                         <p:inputText id="email" value="#{usuarioMB.usuario.email}" required="true" 
+                                                      requiredMessage="Campo obrigatório" maxlength="70" tabindex="1" />
+                                     </fieldset>
+                                     <fieldset>
+                                         <label for="password">Senha</label>
+                                         <p:password id="senha" value="#{usuarioMB.usuario.senha}" required="true" 
+                                                     requiredMessage="Campo obrigatório" maxlength="50" tabindex="2"/>
+                                     </fieldset>
+                                     <p:commandButton value="Entrar" id="login" actionListener="#{usuarioMB.validarUsuario}" 
+                                                      ajax="false" update="growl" style="width: 50%;" />
+                                 </fieldset>
+                                 <span><a href="#">Esqueci minha senha</a></span>
+                             </h:form>
+                         </div>
+                     </div>
+                </li>
+           </c:if>
+            
+           <!-- USUARIO IDENTIFICADO -->
+           <c:if test="#{not empty usuarioMB.usuario.codigoUsuario}">
+                <li style='float: right;'>  
+                    <h:form>
+                        <h:commandLink value="Sair" action="#{usuarioMB.sairSistema}" class="linkTituloMenu" style="padding: 17px 40px 9px 10px;"/>
+                    </h:form>
+                </li>
+           </c:if>
+           
+           <!-- IDENTIFICADO USUARIO LOGADO -->
            <li style="float: right;">
-            <h:outputText value="#{usuarioMB.usuario.nomeTitulo}" class="fonteTituloMenu"/>
+                <h:outputText value="#{usuarioMB.usuario.nomeTitulo}" class="fonteTituloMenu"/>
            </li> 
         </ul>
             
