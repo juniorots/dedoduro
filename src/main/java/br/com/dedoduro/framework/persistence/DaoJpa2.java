@@ -1,5 +1,6 @@
 package br.com.dedoduro.framework.persistence;
 
+import br.com.dedoduro.util.Util;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;

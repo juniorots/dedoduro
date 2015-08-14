@@ -10,6 +10,7 @@ import br.com.dedoduro.modelo.Usuario;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -33,6 +34,22 @@ public class Util {
         SimpleDateFormat formato  = new SimpleDateFormat("dd/MM/yyyy");        
         sb.append( formato.format(data) );
         return sb.toString();
+    }
+    
+    /**
+     * Trabalha na formatacao da data no formato yyyy-MM-dd
+     * @param data
+     * @return 
+     */
+    public static Date formatarDataBanco ( String pData ) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date data = null;
+        try {
+            data = new Date( formato.parse(pData).getTime() );
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+        return data;
     }
     
     public static String cifrar(String texto) {

@@ -197,7 +197,7 @@ public class UsuarioMB implements Serializable {
         ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);
         
         if (!Util.isEmpty( retorno ) ) {
-            
+    
             // TO-DO: Programar envio de e-mail...
             
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Uma senha automática fora enviado para o e-mail informado, após a sua válidação procure alterá-la.");
