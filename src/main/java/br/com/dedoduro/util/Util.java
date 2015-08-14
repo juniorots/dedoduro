@@ -69,6 +69,7 @@ public class Util {
         sessao.setAttribute( "CODIGO_USUARIO", usuario.getCodigoUsuario() );
         sessao.setAttribute( "NOME_USUARIO", usuario.getNome() );
         sessao.setAttribute( "NOME_TITULO", usuario.getNomeTitulo() );
+         sessao.setAttribute( "EMAIL_USUARIO", usuario.getEmail() );
         sessao.setAttribute( "DT_NASCIMENTO_USUARIO", usuario.getDtNascimento() );
     }
     
@@ -85,6 +86,7 @@ public class Util {
             usuario.setCodigoUsuario( (Long) sessao.getAttribute("CODIGO_USUARIO") );
             usuario.setNome( (String) sessao.getAttribute("NOME_USUARIO") );
             usuario.setNomeTitulo( (String) sessao.getAttribute("NOME_TITULO") );
+             usuario.setEmail( (String) sessao.getAttribute("EMAIL_USUARIO") );
             usuario.setDtNascimento( (Date) sessao.getAttribute("DT_NASCIMENTO_USUARIO") );
         }
         
