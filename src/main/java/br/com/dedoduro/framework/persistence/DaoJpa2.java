@@ -87,6 +87,54 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
     protected <T> Path<T> getTemplateField(Root<DO> root, String field) {
         return (Path<T>) getField(root, field);
     }
+    
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public DO findByStringDateOperatorEqual(Map<String, String> firstFieldsMap, Map<String, Date> secondFieldsMap, boolean ignoreCase, int first, int max) {
+        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<DO> criteriaQuery = criteriaBuilder.createQuery(getDomainClass());
+        Root<DO> root = criteriaQuery.from(getDomainClass());
+
+        List<Predicate> predicates = new ArrayList<>();
+        for (Map.Entry<String, String> entry : firstFieldsMap.entrySet()) {
+            Path path = this.getField(root, entry.getKey());
+            if (path != null) {
+                Predicate predicate;
+
+                if (ignoreCase) {
+                    predicate = criteriaBuilder.equal(criteriaBuilder.upper(path), entry.getValue().toUpperCase());
+                } else {
+                    predicate = criteriaBuilder.equal(path, entry.getValue());
+                }
+
+                predicates.add(predicate);
+            }
+        }
+        
+        for (Map.Entry<String, Date> entry : secondFieldsMap.entrySet()) {
+            Path path = this.getField(root, entry.getKey());
+            if (path != null) {
+                Predicate predicate;
+
+//                if (ignoreCase) {
+////                    ParameterExpression<Date> param = criteriaBuilder.parameter(Date.class, entry.getValue() );
+//                    predicate = criteriaBuilder.equal(criteriaBuilder.upper(path), entry.getValue() );
+//                } else {
+                    predicate = criteriaBuilder.equal(path, entry.getValue());
+//                }
+
+                predicates.add(predicate);
+            }
+        }
+        
+        criteriaQuery.where(predicates.toArray(new Predicate[]{}));
+        TypedQuery<DO> query = getEntityManager().createQuery(criteriaQuery);
+        query.setFirstResult(first);
+        query.setMaxResults(max);
+
+        DO result = query.getSingleResult();
+
+        return result;
+    }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
@@ -106,7 +154,7 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
 
                 if (ignoreCase) {
                     if (entry.getKey().equalsIgnoreCase("dtNascimento")) {
-                        ParameterExpression<Date> param = criteriaBuilder.parameter(Date.class, entry.getValue().toUpperCase());
+                        ParameterExpression<Date> param = criteriaBuilder.parameter(Date.class, entry.getValue().toUpperCase() );
                         predicate = criteriaBuilder.equal(criteriaBuilder.upper(path), param);
                     } else {
                         predicate = criteriaBuilder.like(criteriaBuilder.upper(path), entry.getValue().toUpperCase());

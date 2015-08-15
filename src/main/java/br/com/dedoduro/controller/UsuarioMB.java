@@ -6,6 +6,7 @@ import br.com.dedoduro.util.Util;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -192,19 +193,23 @@ public class UsuarioMB implements Serializable {
         UsuarioDAO dao = new UsuarioDAO(entityManager);
         
         HashMap<String, String> campos = new HashMap<>();
+        HashMap<String, Date> campoData = new HashMap<>();
         campos.put("email", getUsuario().getEmail() );
-        campos.put("dtNascimento", Util.captarDataFormatada( getUsuario().getDtNascimento() ) );
+        campoData.put("dtNascimento", getUsuario().getDtNascimento() );
         
-        ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);
+//        ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);
+        Usuario retorno = (Usuario) dao.findByStringDateOperatorEqual(campos, campoData, true, 0, 1);
         
         if (!Util.isEmpty( retorno ) ) {
     
             // TO-DO: Programar envio de e-mail...
             
-            mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Uma senha automática fora enviado para o e-mail informado, após a sua válidação procure alterá-la.");
+            mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Uma senha automática fora enviado para o e-mail informado, <br />"
+                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;após a sua válidação procure alterá-la.");
         } else {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Informações inexistentes em nossa base de dados, favor tentar novamente.");            
         }
+        usuario = new Usuario();
         
         RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
     }

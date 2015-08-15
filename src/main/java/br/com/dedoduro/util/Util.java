@@ -25,13 +25,20 @@ import javax.servlet.http.HttpSession;
 public class Util {
     
     /**
-     * Capta a data no formato
-     * dd/MM/yyyy
+     * Capta a data no formato, especificado pelo usuario
+     * caso nao seja especificado um formato valido
+     * ser utilizado o padrao: dd/MM/yyyy
+     * 
      * @return 
      */
-    public static String captarDataFormatada ( Date data ) {
+    public static String captarDataFormatada ( Date data, String padrao) {
         StringBuilder sb = new StringBuilder();
-        SimpleDateFormat formato  = new SimpleDateFormat("dd/MM/yyyy");        
+        SimpleDateFormat formato = null;
+        if ( isEmpty (padrao) ) {
+            formato  = new SimpleDateFormat("dd/MM/yyyy");        
+        } else {
+            formato  = new SimpleDateFormat( padrao );        
+        }
         sb.append( formato.format(data) );
         return sb.toString();
     }
