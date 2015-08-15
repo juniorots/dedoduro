@@ -35,6 +35,11 @@ public class UtilTest {
     public void tearDown() {
     }
 
+    @Test
+    public void model() {
+        
+    }
+    
 //    @Test
     public void cifrarRecuperacao() {
         assertNotNull( Util.cifrarRecuperacao("SenhaTeste") );

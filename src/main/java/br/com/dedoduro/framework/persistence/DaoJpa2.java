@@ -1,9 +1,9 @@
 package br.com.dedoduro.framework.persistence;
 
-import br.com.dedoduro.util.Util;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -104,7 +105,12 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
                 Predicate predicate;
 
                 if (ignoreCase) {
-                    predicate = criteriaBuilder.like(criteriaBuilder.upper(path), entry.getValue().toUpperCase());
+                    if (entry.getKey().equalsIgnoreCase("dtNascimento")) {
+                        ParameterExpression<Date> param = criteriaBuilder.parameter(Date.class, entry.getValue().toUpperCase());
+                        predicate = criteriaBuilder.equal(criteriaBuilder.upper(path), param);
+                    } else {
+                        predicate = criteriaBuilder.like(criteriaBuilder.upper(path), entry.getValue().toUpperCase());
+                    }
                 } else {
                     predicate = criteriaBuilder.like(path, entry.getValue());
                 }
