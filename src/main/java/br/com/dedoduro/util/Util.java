@@ -16,10 +16,7 @@ import java.util.Collection;
 import java.util.Date;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;Case) {
-////                    ParameterExpression<Date> param = criteriaBuilder.parameter(Date.class, entry.getValue() );
-//                    predicate = criteriaBuilder.equal(criteriaBuilder.upper(path), entry.getValue() );
-//                } else {
+import javax.servlet.http.HttpSession;
 
 /**
  *
