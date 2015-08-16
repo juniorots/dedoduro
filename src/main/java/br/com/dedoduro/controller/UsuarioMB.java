@@ -205,7 +205,7 @@ public class UsuarioMB implements Serializable {
             // TO-DO: Programar envio de e-mail...
             
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Uma senha automática fora enviado para o e-mail informado, <br />"
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;após a sua válidação procure alterá-la.");
+                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;após a sua validação procure alterá-la.");
         } else {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Informações inexistentes em nossa base de dados, favor tentar novamente.");            
         }

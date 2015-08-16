@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -114,14 +115,7 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
             Path path = this.getField(root, entry.getKey());
             if (path != null) {
                 Predicate predicate;
-
-//                if (ignoreCase) {
-////                    ParameterExpression<Date> param = criteriaBuilder.parameter(Date.class, entry.getValue() );
-//                    predicate = criteriaBuilder.equal(criteriaBuilder.upper(path), entry.getValue() );
-//                } else {
-                    predicate = criteriaBuilder.equal(path, entry.getValue());
-//                }
-
+                predicate = criteriaBuilder.equal(path, entry.getValue());
                 predicates.add(predicate);
             }
         }
@@ -131,7 +125,13 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
         query.setFirstResult(first);
         query.setMaxResults(max);
 
-        DO result = query.getSingleResult();
+        DO result = null;
+        try {
+            result = query.getSingleResult();
+        } catch ( NoResultException ne ) {
+            // TO-DO nothing! :-) Por nao ter encontrado nenhum registro
+        }
+            
 
         return result;
     }
