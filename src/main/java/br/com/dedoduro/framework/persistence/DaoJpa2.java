@@ -131,7 +131,6 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
         } catch ( NoResultException ne ) {
             // TO-DO nothing! :-) Por nao ter encontrado nenhum registro
         }
-            
 
         return result;
     }

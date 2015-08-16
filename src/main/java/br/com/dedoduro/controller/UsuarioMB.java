@@ -197,7 +197,6 @@ public class UsuarioMB implements Serializable {
         campos.put("email", getUsuario().getEmail() );
         campoData.put("dtNascimento", getUsuario().getDtNascimento() );
         
-//        ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);
         Usuario retorno = (Usuario) dao.findByStringDateOperatorEqual(campos, campoData, true, 0, 1);
         
         if (!Util.isEmpty( retorno ) ) {
