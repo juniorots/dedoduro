@@ -29,10 +29,16 @@
                     <p:message for="email"/>
                     
                     <p:outputLabel for="senha" value="Senha: " styleClass="fontePadrao"/>
-                    <p:password id="senha" value="#{usuarioMB.usuario.senha}" feedback="true"
-                                promptLabel="Nível da senha" weakLabel="Fraca"
-                                goodLabel="Boa" strongLabel="Forte" required="true" requiredMessage="Campo obrigatório" maxlength="50" size="30"/>
-                    <p:message for="senha"/>
+                    <p:password id="senha" value="#{usuarioMB.usuario.senha}" feedback="true" maxlength="50" size="30"
+                                promptLabel="Nível da senha" weakLabel="Fraca" match="confirmarSenha"
+                                goodLabel="Boa" strongLabel="Forte" required="true" requiredMessage="Campo obrigatório" />
+                    &nbsp;
+                    
+                    <p:outputLabel for="senha" value="Confirme a senha: " styleClass="fontePadrao"/>
+                    <p:password id="confirmarSenha" value="#{usuarioMB.usuario.senha}" label="Erro" 
+                                required="true" maxlength="50" size="30" />
+                    <!--<p:message for="senha"/>-->
+                    &nbsp;
                     
                     <p:outputLabel for="dtNascimento" value="Data de Nascimento: " styleClass="fontePadrao"/>
                     <p:calendar id="dtNascimento" value="#{usuarioMB.usuario.dtNascimento}" locale="pt" navigator="true"
