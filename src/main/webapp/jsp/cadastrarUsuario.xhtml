@@ -31,12 +31,13 @@
                     <p:outputLabel for="senha" value="Senha: " styleClass="fontePadrao"/>
                     <p:password id="senha" value="#{usuarioMB.usuario.senha}" feedback="true" maxlength="50" size="30"
                                 promptLabel="Nível da senha" weakLabel="Fraca" match="confirmarSenha"
-                                goodLabel="Boa" strongLabel="Forte" required="true" requiredMessage="Campo obrigatório" />
+                                goodLabel="Boa" strongLabel="Forte" required="true" requiredMessage="Campo obrigatório" 
+                                validatorMessage="Senhas diferentes"/>
                     &nbsp;
                     
                     <p:outputLabel for="senha" value="Confirme a senha: " styleClass="fontePadrao"/>
                     <p:password id="confirmarSenha" value="#{usuarioMB.usuario.senha}" label="Erro" 
-                                required="true" maxlength="50" size="30" />
+                                required="true" maxlength="50" size="30" validatorMessage="Senhas diferentes" />
                     <!--<p:message for="senha"/>-->
                     &nbsp;
                     

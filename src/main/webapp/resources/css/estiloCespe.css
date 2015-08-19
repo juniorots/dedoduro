@@ -75,6 +75,7 @@
     opacity: .85;
     filter: alpha(opacity = 85);
     line-height: 14px;
+    z-index: 1002;
     
     /* campos a serem customizados a cada banca */
     width:180%;
