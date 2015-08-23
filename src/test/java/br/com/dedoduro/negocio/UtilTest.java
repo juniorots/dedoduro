@@ -6,7 +6,9 @@
 
 package br.com.dedoduro.negocio;
 
+import br.com.dedoduro.util.EnviarEmail;
 import br.com.dedoduro.util.Util;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertNotNull;
@@ -35,7 +37,7 @@ public class UtilTest {
     public void tearDown() {
     }
 
-    @Test
+//    @Test
     public void model() {
         
     }
@@ -43,5 +45,12 @@ public class UtilTest {
 //    @Test
     public void cifrarRecuperacao() {
         assertNotNull( Util.cifrarRecuperacao("SenhaTeste") );
+    }
+    
+    @Test
+    public void enviarEmail() {
+        ArrayList<String> emails = new ArrayList<>();
+        emails.add("juniormsd@gmail.com");
+        EnviarEmail.recuperarSenha(emails, "SENHA_CRIPTOGRAFADA_AQUI!");
     }
 }
