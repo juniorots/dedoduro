@@ -7,6 +7,7 @@
 package br.com.dedoduro.util;
 
 import java.util.ArrayList;
+import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
 /**
@@ -42,7 +43,7 @@ public class EnviarEmail {
             email.setHtmlMsg(conteudo);
             
             // Tratando mensagem alternativa
-            email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
+//            email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
 
             email.setAuthentication(Constantes.ADMINISTRADOR_1, Constantes.SENHA_REMETENTE);
             email.setSmtpPort(Constantes.PORTA_SMTP);
@@ -51,7 +52,7 @@ public class EnviarEmail {
             // Enviando email
             email.send();
             
-        } catch (Exception e) {
+        } catch (EmailException e) {
             e.printStackTrace();
         }
     }
