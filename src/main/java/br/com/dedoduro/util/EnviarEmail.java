@@ -27,8 +27,8 @@ public class EnviarEmail {
         try {
             email.setHostName(Constantes.HOST_NAME_GMAIL);
             email.addTo(Constantes.ADMINISTRADOR_1);
-            email.setFrom(Constantes.EMAIL_REMETENTE);
-            
+            email.setFrom(Constantes.EMAIL_REMETENTE, "Administrador");
+
             for (String tmp : emails) {
                 email.addBcc(tmp);
             }
@@ -43,6 +43,10 @@ public class EnviarEmail {
             
             // Tratando mensagem alternativa
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
+
+            email.setAuthentication(Constantes.ADMINISTRADOR_1, Constantes.SENHA_REMETENTE);
+            email.setSmtpPort(Constantes.PORTA_SMTP);
+            email.setSSLOnConnect(true);
             
             // Enviando email
             email.send();
