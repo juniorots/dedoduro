@@ -47,7 +47,6 @@ public class EnviarEmail {
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
 
             email.setSmtpPort(Constantes.PORTA_SMTP_GMAIL);
-//            email.setAuthentication(Constantes.ADMINISTRADOR_1, Constantes.SENHA_REMETENTE);
             email.setAuthenticator(new DefaultAuthenticator(Constantes.EMAIL_REMETENTE_GMAIL, Constantes.SENHA_REMETENTE_GMAIL));
             email.setSSLOnConnect(true);
             
@@ -69,10 +68,10 @@ public class EnviarEmail {
         String conteudo = "<html><head><title>Recuperação de senha - Dedoduro.</title></head>"
                 + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br /><br />"
                 + "Assim acreditamos que sendo uma petição realizada por você, geramos uma nova senha! <br />"
-                + "No entanto, caso essa solicitação não tenha sido gerada por favor, solicitamos o quanto antes <br />"
-                + "que altere-a, prezando pela segurança dos seus dados. <br /><br />"
+                + "No entanto, caso essa solicitação não tenha sido gerada por favor,<br />" 
+                + "solicitamos o quanto antes que altere-a, prezando pela segurança dos seus dados. <br /><br />"
                 + "Tome nota da sua nova senha: <b>" +adicionalConteudo+ "</b><br /><br />"
-                + "Sistema de recuperação automática - DedoDuro."
+                + "[ - Sistema de recuperação automática - DedoDuro. - ]"
                 + "</body></html>";
         
         tratarEnvio(emails, assunto, conteudo);
