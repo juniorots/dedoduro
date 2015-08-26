@@ -12,14 +12,15 @@ package br.com.dedoduro.util;
  */
 public class Constantes {
     public static String HOST_NAME_GMAIL = "smtp.gmail.com";
+    public static String HOST_NAME_HOTMAIL = "smtp.live.com";
     public static String ADMINISTRADOR_1 = "juniorots@gmail.com";
-    public static Integer PORTA_SMTP = 465;
+    public static Integer PORTA_SMTP_GMAIL = 465;
 
    /*
     * Nota: tal usuario somente sera utilizado para envio automatico
     * de senhas, assim nao deve ser utilizado para responder qualquer questionamento
     * ou item relacionado a correspondencia que nao seja destinado ao sistema Dedoduro.
     */
-    public static String EMAIL_REMETENTE = "dedoduro.default.user@gmail.com";
-    public static String SENHA_REMETENTE = "d3d0Dur0123";
+    public static String EMAIL_REMETENTE_GMAIL = "dedoduro.default.user@gmail.com";
+    public static String SENHA_REMETENTE_GMAIL = "d3d0Dur0123";
 }

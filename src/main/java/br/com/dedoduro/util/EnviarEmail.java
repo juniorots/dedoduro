@@ -29,7 +29,7 @@ public class EnviarEmail {
         try {
             email.setHostName(Constantes.HOST_NAME_GMAIL);
             email.addTo(Constantes.ADMINISTRADOR_1);
-            email.setFrom(Constantes.EMAIL_REMETENTE, "Administrador");
+            email.setFrom(Constantes.EMAIL_REMETENTE_GMAIL, "Administrador");
 
             for (String tmp : emails) {
                 email.addBcc(tmp);
@@ -46,9 +46,9 @@ public class EnviarEmail {
             // Tratando mensagem alternativa
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
 
-            email.setSmtpPort(Constantes.PORTA_SMTP);
+            email.setSmtpPort(Constantes.PORTA_SMTP_GMAIL);
 //            email.setAuthentication(Constantes.ADMINISTRADOR_1, Constantes.SENHA_REMETENTE);
-            email.setAuthenticator(new DefaultAuthenticator(Constantes.ADMINISTRADOR_1, Constantes.SENHA_REMETENTE));
+            email.setAuthenticator(new DefaultAuthenticator(Constantes.EMAIL_REMETENTE_GMAIL, Constantes.SENHA_REMETENTE_GMAIL));
             email.setSSLOnConnect(true);
             
             // Enviando email
@@ -67,10 +67,10 @@ public class EnviarEmail {
         
         String assunto = "[DedoDuro] - Recuperação de Senha.";
         String conteudo = "<html><head><title>Recuperação de senha - Dedoduro.</title></head>"
-                + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br />"
+                + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br /><br />"
                 + "Assim acreditamos que sendo uma petição realizada por você, geramos uma nova senha! <br />"
                 + "No entanto, caso essa solicitação não tenha sido gerada por favor, solicitamos o quanto antes <br />"
-                + "que altere sua senha, prezando pela segurança dos seus dados. <br /><br />"
+                + "que altere-a, prezando pela segurança dos seus dados. <br /><br />"
                 + "Tome nota da sua nova senha: <b>" +adicionalConteudo+ "</b><br /><br />"
                 + "Sistema de recuperação automática - DedoDuro."
                 + "</body></html>";
