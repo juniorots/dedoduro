@@ -69,9 +69,9 @@ public class EnviarEmail {
                 + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br /><br />"
                 + "Assim acreditamos que sendo uma petição realizada por você, geramos uma nova senha! <br />"
                 + "No entanto, caso essa solicitação não tenha sido gerada por favor,<br />" 
-                + "solicitamos o quanto antes que altere-a, prezando pela segurança dos seus dados. <br /><br />"
-                + "Tome nota da sua nova senha: <b>" +adicionalConteudo+ "</b><br /><br />"
-                + "[ - Sistema de recuperação automática - DedoDuro. - ]"
+                + "solicitamos o quanto antes que altere-a, prezando pela segurança dos seus dados. <br /><br /><br />"
+                + "Tome nota da sua nova senha: <h1><b>" +adicionalConteudo+ "</b></h1>"
+                + "<b>[ - POR FAVOR, NÃO RESPONDA ESSE E-MAIL. - ]</b><br />"
                 + "</body></html>";
         
         tratarEnvio(emails, assunto, conteudo);

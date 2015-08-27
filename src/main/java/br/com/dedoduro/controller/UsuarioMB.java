@@ -2,12 +2,14 @@ package br.com.dedoduro.controller;
 
 import br.com.dedoduro.base.UsuarioDAO;
 import br.com.dedoduro.modelo.Usuario;
+import br.com.dedoduro.util.EnviarEmail;
 import br.com.dedoduro.util.Util;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Random;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -199,9 +201,19 @@ public class UsuarioMB implements Serializable {
         
         Usuario retorno = (Usuario) dao.findByStringDateOperatorEqual(campos, campoData, true, 0, 1);
         
-        if (!Util.isEmpty( retorno ) ) {
+        if ( !Util.isEmpty( retorno ) ) {
     
-            // TO-DO: Programar envio de e-mail...
+            Random random = new Random();
+            String novaSenha = Util.cifrarRecuperacao( String.valueOf( random.nextInt( 1000000 ) ) );
+            retorno.setSenha( Util.cifrar( novaSenha ) );
+            
+            dao.update( retorno );
+            entityManager.getTransaction().commit();
+            
+            ArrayList emails = new ArrayList();
+            emails.add( retorno.getEmail() );
+            
+            EnviarEmail.recuperarSenha(emails, novaSenha);
             
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Uma senha automática fora enviado para o e-mail informado, <br />"
                     + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;após a sua validação procure alterá-la.");

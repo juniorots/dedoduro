@@ -37,7 +37,7 @@ public class UtilTest {
     public void tearDown() {
     }
 
-//    @Test
+    @Test
     public void model() {
         
     }
@@ -47,7 +47,7 @@ public class UtilTest {
         assertNotNull( Util.cifrarRecuperacao("SenhaTeste") );
     }
     
-    @Test
+//    @Test
     public void enviarEmail() {
         ArrayList<String> emails = new ArrayList<>();
         emails.add("juniormsd@gmail.com");
