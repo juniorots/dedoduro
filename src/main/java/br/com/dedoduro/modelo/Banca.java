@@ -6,6 +6,7 @@
 
 package br.com.dedoduro.modelo;
 
+import br.com.dedoduro.framework.persistence.DomainObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import javax.persistence.ManyToMany;
  * @author Jose Alves
  */
 @Entity
-public class Banca {
+public class Banca extends DomainObject {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -14,6 +14,7 @@
                      <p:ajax event="tabChange" listener="#{bancaMB.onTabChange}" update=":form:msgs" />
                      <p:ajax event="tabClose" listener="#{bancaMB.onTabClose}" update=":form:msgs" />
 
+                     <!--
                      <p:tab title="Teste 01">
                          <h:panelGrid columns="2" cellpadding="10">
                             <p:graphicImage name="mpog.jpg" library="images"/>
@@ -34,18 +35,19 @@
                             <h:outputText value="Ministério do Planejamento e Orçamento"/>
                         </h:panelGrid>
                      </p:tab>
-                     <!--
-                     <ui:repeat value="#{bancaMB.listaBanca}" var="item">
+                     -->
+                     <ui:repeat value="#{bancaMB.listaBanca}" var="item" >
                          <p:tab title="#{item.nomeBanca}">
+                     <!--
                              <ui:repeat value="#{item.concursos}" var="concurso">
                                 <h:panelGrid columns="2" cellpadding="10">
                                     <p:graphicImage name="#{concurso.urlImagem}" library="images"/>
                                     <h:outputText value="#{concurso.nomeConcurso}"/>
                                 </h:panelGrid>
                              </ui:repeat>
+                     -->
                         </p:tab>
                      </ui:repeat>
-                     -->
                  </p:accordionPanel>
             </h:form>
         </ui:define>

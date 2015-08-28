@@ -161,7 +161,7 @@ public class UsuarioMB implements Serializable {
         UsuarioDAO dao = new UsuarioDAO(entityManager);
         
         HashMap<String, String> campos = new HashMap<>();
-        campos.put("email", getUsuario().getEmail());
+        campos.put("email", getUsuario().getEmail() );
         campos.put("senha", Util.cifrar( getUsuario().getSenha() ) );
 
         ArrayList<Usuario> retorno = (ArrayList<Usuario>) dao.findByStringFields(campos, true, 0, 1);

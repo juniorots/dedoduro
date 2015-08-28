@@ -6,6 +6,7 @@
 
 package br.com.dedoduro.controller;
 
+import br.com.dedoduro.base.BancaDAO;
 import br.com.dedoduro.modelo.Banca;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +14,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import lombok.Cleanup;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
@@ -31,6 +36,7 @@ public class BancaMB {
      * Creates a new instance of BancaMB
      */
     public BancaMB() {
+        setListaBanca( listarTodosConcursos() );
     }
 
     public Banca getBanca() {
@@ -61,5 +67,21 @@ public class BancaMB {
         FacesMessage msg = new FacesMessage("Desativado", event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
+    
+    /**
+     * Trara todos os concursos contidos na base
+     */
+    public ArrayList<Banca> listarTodosConcursos() {
+         @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        BancaDAO dao = new BancaDAO(entityManager);
+        ArrayList<Banca> bancas = (ArrayList<Banca>) dao.selectAll();
+        
+        return bancas;
+    }
 }
