@@ -6,6 +6,7 @@
 
 package br.com.dedoduro.modelo;
 
+import br.com.dedoduro.framework.persistence.DomainObject;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ import javax.persistence.Id;
  * @author Jose Alves
  */
 @Entity
-public class Concurso {
+public class Concurso extends DomainObject {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
