@@ -43,6 +43,11 @@ public class BancaDAOTest {
     public void tearDown() {
     }
 
+//    @Test
+    public void testMain() {
+        
+    }
+    
     @Test
     public void cargaInicial() {
         @Cleanup
@@ -52,45 +57,45 @@ public class BancaDAOTest {
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         
-        Banca banca = new Banca();
+        Banca banca = null;
         BancaDAO dao = new BancaDAO(entityManager);
         ConcursoDAOTest testeConcurso = new ConcursoDAOTest();
         
-//        banca.setNomeBanca("CESPE");
+        banca = new Banca();
+        banca.setNomeBanca("CESPE");
+        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
+        dao.insert(banca);
+        
+//        banca = new Banca();
+//        banca.setNomeBanca("CESGRANRIO");
+//        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
+//        dao.insert(banca);
+//        
+//        banca = new Banca();
+//        banca.setNomeBanca("FCC");
+//        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
+//        dao.insert(banca);
+//        
+//        banca = new Banca();
+//        banca.setNomeBanca("QUADRIX");
+//        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
+//        dao.insert(banca);
+//        
+//        banca = new Banca();
+//        banca.setNomeBanca("MARINHA");
+//        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
+//        dao.insert(banca);
+//        
+//        banca = new Banca();
+//        banca.setNomeBanca("EXERCITO");
+//        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
+//        dao.insert(banca);
+//        
+//        banca = new Banca();
+//        banca.setNomeBanca("AERONAUTICA");
 //        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
 //        dao.insert(banca);
         
-        banca = new Banca();
-        banca.setNomeBanca("CESGRANRIO");
-        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
-        dao.insert(banca);
-        
-        banca = new Banca();
-        banca.setNomeBanca("FCC");
-        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
-        dao.insert(banca);
-        
-        banca = new Banca();
-        banca.setNomeBanca("QUADRIX");
-        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
-        dao.insert(banca);
-        
-        banca = new Banca();
-        banca.setNomeBanca("MARINHA");
-        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
-        dao.insert(banca);
-        
-        banca = new Banca();
-        banca.setNomeBanca("EXERCITO");
-        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
-        dao.insert(banca);
-        
-        banca = new Banca();
-        banca.setNomeBanca("AERONAUTICA");
-        banca.setConcursos( testeConcurso.inserirConcursos( banca.getNomeBanca().toLowerCase() ) );
-        dao.insert(banca);
-        
         entityManager.getTransaction().commit();
-        
     }
 }
