@@ -30,7 +30,7 @@ import org.primefaces.event.TabCloseEvent;
 public class BancaMB {
 
     private Banca banca = new Banca();
-    private Collection<Banca> listaBanca  = new ArrayList<>();
+    private Collection<Banca> listaBanca;
     
     /**
      * Creates a new instance of BancaMB
@@ -47,7 +47,8 @@ public class BancaMB {
     }
 
     public Collection<Banca> getListaBanca() {
-        return listarTodosConcursos();
+        listaBanca = listarTodosConcursos();
+        return listaBanca;
     }
 
     public void setListaBanca(Collection<Banca> listaBanca) {
