@@ -72,7 +72,7 @@ public class BancaMB {
      * Trara todos os concursos contidos na base
      */
     public ArrayList<Banca> listarTodosConcursos() {
-         @Cleanup
+        @Cleanup
         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
         
         @Cleanup

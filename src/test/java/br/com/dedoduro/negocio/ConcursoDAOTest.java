@@ -6,9 +6,7 @@
 
 package br.com.dedoduro.negocio;
 
-import br.com.dedoduro.base.BancaDAO;
 import br.com.dedoduro.base.ConcursoDAO;
-import br.com.dedoduro.modelo.Banca;
 import br.com.dedoduro.modelo.Concurso;
 import java.util.ArrayList;
 import java.util.Collection;
