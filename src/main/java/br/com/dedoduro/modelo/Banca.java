@@ -31,7 +31,7 @@ public class Banca extends DomainObject {
     private String nomeBanca;
     private String urlImagem;
     
-    @ManyToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinColumn(name = "codigoConcurso")
     private Collection<Concurso> concursos;
 

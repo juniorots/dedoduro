@@ -36,7 +36,6 @@ public class BancaMB {
      * Creates a new instance of BancaMB
      */
     public BancaMB() {
-        setListaBanca( listarTodosConcursos() );
     }
 
     public Banca getBanca() {
@@ -48,10 +47,7 @@ public class BancaMB {
     }
 
     public Collection<Banca> getListaBanca() {
-        if (listaBanca == null) {
-            return new ArrayList<Banca>();
-        }
-        return listaBanca;
+        return listarTodosConcursos();
     }
 
     public void setListaBanca(Collection<Banca> listaBanca) {

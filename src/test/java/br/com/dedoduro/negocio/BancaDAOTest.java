@@ -43,7 +43,7 @@ public class BancaDAOTest {
     public void tearDown() {
     }
 
-    @Test
+    @Test 
     public void testMain() {
     }
     
