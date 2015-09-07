@@ -17,9 +17,9 @@
                      <p:ajax event="tabClose" listener="#{bancaMB.onTabClose}" update=":form:msgs" />
                      -->
                      
-                     <c:forEach var="item" items="#{bancaMB.listaBanca}">
+                     <c:forEach var="item" items="#{bancaMB.listaGeralBanca}">
                         <p:tab title="#{item.nomeBanca}">
-                            <c:forEach var="concurso" items="#{item.    concursos}">
+                            <c:forEach var="concurso" items="#{item.concursos}">
                                 <h:panelGrid columns="2" cellpadding="10">
                                     <p:graphicImage name="#{concurso.urlImagem}" library="images"/>
                                     <h:outputText value="#{concurso.nomeConcurso}"/>

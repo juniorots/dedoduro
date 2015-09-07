@@ -6,11 +6,16 @@
 
 package br.com.dedoduro.controller;
 
+import br.com.dedoduro.base.ConcursoDAO;
 import br.com.dedoduro.modelo.Concurso;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import lombok.Cleanup;
 
 /**
  *
@@ -20,27 +25,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class ConcursoMB {
     
-    private Collection<Concurso> listaCespe;
-    
     public ConcursoMB() {
     }
 
-    public Collection<Concurso> getListaCespe() {
-        return listaCespe;
-    }
-
-    public void setListaCespe(Collection<Concurso> listaCespe) {
-        this.listaCespe = listaCespe;
-    }
-    
-    /**
-     * Carregamento de lista com limite de registros
-     * prezando pela estetica da pagina
-     * @return 
-     */
-    public Collection<Concurso> carregarListaCespe() {
-        Collection<Concurso> retorno = new ArrayList();
-        
-        return retorno;
-    }
 }
