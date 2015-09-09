@@ -6,16 +6,9 @@
 
 package br.com.dedoduro.controller;
 
-import br.com.dedoduro.base.ConcursoDAO;
 import br.com.dedoduro.modelo.Concurso;
-import java.util.ArrayList;
-import java.util.Collection;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import lombok.Cleanup;
 
 /**
  *
@@ -25,7 +18,16 @@ import lombok.Cleanup;
 @RequestScoped
 public class ConcursoMB {
     
+    Concurso concurso = new Concurso();
+    
     public ConcursoMB() {
     }
 
+    public Concurso getConcurso() {
+        return concurso;
+    }
+
+    public void setConcurso(Concurso concurso) {
+        this.concurso = concurso;
+    }
 }

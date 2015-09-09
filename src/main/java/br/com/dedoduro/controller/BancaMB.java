@@ -140,7 +140,7 @@ public class BancaMB {
     }
     
     /**
-     * Trara todos os concursos contidos na base
+     * Trata todos os concursos contidos na base
      */
     public ArrayList<Banca> listarTodosConcursos() {
         @Cleanup
