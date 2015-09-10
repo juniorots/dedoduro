@@ -89,6 +89,18 @@
     /*color: #4682B4 !important;*/
 }
 
+.linkPadrao {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 17px !important;
+    color: #445058 !important;
+}
+
+.linkPadrao:hover {
+    color: #708090 !important;
+    /*color: #4682B4 !important;*/
+}
+
 .fonteNegrito{
     font-weight: bold;
 }

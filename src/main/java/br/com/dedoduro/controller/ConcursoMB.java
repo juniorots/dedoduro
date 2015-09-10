@@ -30,4 +30,12 @@ public class ConcursoMB {
     public void setConcurso(Concurso concurso) {
         this.concurso = concurso;
     }
+    
+    /**
+     * Carregara a descricao do concurso
+     * selecionado
+     */
+    public void carregarCaracteristica() {
+        System.out.println("TESTE DE METODO...");
+    }
 }

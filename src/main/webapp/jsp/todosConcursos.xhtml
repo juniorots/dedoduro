@@ -20,9 +20,13 @@
                      <c:forEach var="item" items="#{bancaMB.listaGeralBanca}">
                         <p:tab title="#{item.nomeBanca}">
                             <c:forEach var="concurso" items="#{item.concursos}">
-                                <h:panelGrid columns="2" cellpadding="10">
-                                    <p:graphicImage name="#{concurso.urlImagem}" library="images"/>
-                                    <h:outputText value="#{concurso.nomeConcurso}"/>
+                                <h:panelGrid columns="4" cellpadding="10">
+                                    <h:commandLink action="${concursoMB.carregarCaracteristica}" class="linkPadrao">
+                                        <p:graphicImage name="#{concurso.urlImagem}" library="images" />
+                                    </h:commandLink>
+                                    <h:commandLink action="${concursoMB.carregarCaracteristica}" class="linkPadrao">
+                                        <h:outputText value="#{concurso.nomeConcurso}" />
+                                    </h:commandLink>
                                 </h:panelGrid>
                             </c:forEach>
                         </p:tab>

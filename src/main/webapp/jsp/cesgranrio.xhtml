@@ -15,7 +15,8 @@
         <h:outputScript library="js" name="scriptCesgranrio.js"/>
     </h:head>
     <h:body>
-    <div class="conteudo" >
+        <h:form>
+        <div class="conteudo" >
         <!--
             xxx NOTA: AS IMAGENS INSERIDAS NO MENU ABAIXO, DEVERAO SER REDIMENSIONADAS PARA O TAMANHO DEFAULT DE 72X72 xxx
         -->
@@ -25,11 +26,11 @@
                 <ul id="stack">
                     <c:forEach var="concurso" items="#{item.concursos}">
                         <li>
-                            <a href="#">
+                            <h:commandLink action="#{concursoMB.carregarCaracteristica}">
                                <span>#{concurso.nomeConcurso}</span>
                                <h:graphicImage alt="#{concurso.nomeConcurso}" library="images" 
                                                name="#{concurso.urlImagem}"/>
-                            </a>
+                            </h:commandLink>
                         </li>
                     </c:forEach>
                 </ul>
@@ -37,6 +38,7 @@
                 <span class="fonteCesgranrio">#{item.nomeBanca}</span> 
             </c:forEach>
         </div>
-    </div>
+        </div>
+        </h:form>
     </h:body>
 </html>
