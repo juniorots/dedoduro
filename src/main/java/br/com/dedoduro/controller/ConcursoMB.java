@@ -18,6 +18,8 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class ConcursoMB {
     
+    private static String PAGINA_DESCRICAO = "descricaoConcurso";
+    
     Concurso concurso = new Concurso();
     
     public ConcursoMB() {
@@ -35,7 +37,7 @@ public class ConcursoMB {
      * Carregara a descricao do concurso
      * selecionado
      */
-    public void carregarCaracteristica() {
-        System.out.println("TESTE DE METODO...");
+    public String carregarCaracteristica() {
+        return PAGINA_DESCRICAO;
     }
 }

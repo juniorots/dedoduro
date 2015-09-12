@@ -15,6 +15,10 @@
             <from-outcome>cadastrarUsuario</from-outcome>
             <to-view-id>/jsp/cadastrarUsuario.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>descricaoConcurso</from-outcome>
+            <to-view-id>/jsp/descricaoConcurso.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
@@ -24,6 +28,5 @@
                 <to-view-id>/cadastrarUsuario.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    
     
 </faces-config>
