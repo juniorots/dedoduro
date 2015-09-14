@@ -28,12 +28,22 @@
                         <span class="fontePadrao" style="padding-left: 25px; position:fixed;"><b>R$ 1,99</b></span><br /><br />
                         
                         <!-- Codigo customizado do paypal -->
-                        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" 
-                               border="0" name="submit" 
-                               alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"/>
-                        <img alt="" border="0" 
-                             src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" 
-                             width="1" height="1" />
+                        <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+                            <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" 
+                                   border="0" name="submit" 
+                                   alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"/>
+                            <img alt="" border="0" 
+                                 src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" 
+                                 width="1" height="1" />
+                        </c:if>
+                        
+                        <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+                            <span class="alertaLogin">
+                                Ops...! Amigo, identificamos que você não entrou no sistema,<br />
+                                isso é necessário para comprar o pacote de atualização apresentado. <br /> <br />
+                                Por favor clique no link <b>[ENTRAR]</b> no canto superior direito.
+                            </span>
+                        </c:if>
                         <!-- fim da secao de codigo do paypal -->
                     </h:panelGrid>
                 </h:panelGrid>

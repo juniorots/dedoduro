@@ -153,3 +153,10 @@ body {
     top: 10%;
     right: 20%;
 }
+
+.alertaLogin {
+    background: #8B0000;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #445058;
+}
