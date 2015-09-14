@@ -9,6 +9,7 @@ package br.com.dedoduro.controller;
 import br.com.dedoduro.modelo.Concurso;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -38,6 +39,9 @@ public class ConcursoMB {
      * selecionado
      */
     public String carregarCaracteristica() {
+        String codConcurso = (String) FacesContext.getCurrentInstance().
+                             getExternalContext().getRequestParameterMap().get("codConcurso");
+        
         return PAGINA_DESCRICAO;
     }
 }

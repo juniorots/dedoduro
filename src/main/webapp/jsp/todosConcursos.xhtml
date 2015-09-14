@@ -23,9 +23,11 @@
                                 <h:panelGrid columns="4" cellpadding="10">
                                     <h:commandLink action="${concursoMB.carregarCaracteristica}" class="linkPadrao">
                                         <p:graphicImage name="#{concurso.urlImagem}" library="images" />
+                                        <f:param name="codConcurso" value="#{concurso.codigoConcurso}" />
                                     </h:commandLink>
                                     <h:commandLink action="${concursoMB.carregarCaracteristica}" class="linkPadrao">
                                         <h:outputText value="#{concurso.nomeConcurso}" />
+                                        <f:param name="codConcurso" value="#{concurso.codigoConcurso}" />
                                     </h:commandLink>
                                 </h:panelGrid>
                             </c:forEach>
