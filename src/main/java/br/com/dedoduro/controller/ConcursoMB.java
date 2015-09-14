@@ -6,10 +6,15 @@
 
 package br.com.dedoduro.controller;
 
+import br.com.dedoduro.base.ConcursoDAO;
 import br.com.dedoduro.modelo.Concurso;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import lombok.Cleanup;
 
 /**
  *
@@ -41,6 +46,16 @@ public class ConcursoMB {
     public String carregarCaracteristica() {
         String codConcurso = (String) FacesContext.getCurrentInstance().
                              getExternalContext().getRequestParameterMap().get("codConcurso");
+        
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        ConcursoDAO dao = new ConcursoDAO(entityManager);
+        setConcurso( (Concurso) dao.selectByCodigo( "codigoConcurso", Long.parseLong(codConcurso) ) );
         
         return PAGINA_DESCRICAO;
     }

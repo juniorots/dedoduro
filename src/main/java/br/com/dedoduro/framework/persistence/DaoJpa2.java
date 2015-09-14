@@ -64,6 +64,39 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
         return query.getResultList();
     }
 
+    /**
+     * Normalmente utilizado para consultas onde o codigo do registro sera
+     * fonte de pesquisa
+     * @param campo
+     * @param filtro
+     * @return 
+     */
+    public DO selectByCodigo(String campo, Long filtro) {
+        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<DO> criteriaQuery = criteriaBuilder.createQuery(getDomainClass());
+        Root<DO> root = criteriaQuery.from(getDomainClass());
+
+        List<Predicate> predicates = new ArrayList<>();
+            Path path = this.getField(root, campo);
+            if (path != null) {
+                Predicate predicate;
+                predicate = criteriaBuilder.equal(path, filtro );
+                predicates.add(predicate);
+            }
+        
+        criteriaQuery.where(predicates.toArray(new Predicate[]{}));
+        TypedQuery<DO> query = getEntityManager().createQuery(criteriaQuery);
+
+        DO result = null;
+        try {
+            result = query.getSingleResult();
+        } catch ( NoResultException ne ) {
+            // TO-DO nothing! :-) Por nao ter encontrado nenhum registro
+        }
+
+        return result;
+    }
+    
     @Override
     public DO selectById(UUID id) {
         return getEntityManager().find(getDomainClass(), id);
