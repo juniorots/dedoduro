@@ -229,7 +229,7 @@ public class UsuarioMB implements Serializable {
      * Tratando do fechamento da sessao aberta perlo usuario
      */
     public void sairSistema() {
-        usuario = new Usuario();
-        Util.gravarUsuarioSessao(usuario);
+        Util.limparUsuarioSessao();
+        Util.limparConcursoSessao();
     }
 }

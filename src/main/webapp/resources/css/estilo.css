@@ -155,8 +155,8 @@ body {
 }
 
 .alertaLogin {
-    background: #8B0000;
+    background: #FF6347;
     font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: #445058;
+    font-size: 20px;
+    color: #363636;
 }

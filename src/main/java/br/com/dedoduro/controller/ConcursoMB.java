@@ -8,6 +8,7 @@ package br.com.dedoduro.controller;
 
 import br.com.dedoduro.base.ConcursoDAO;
 import br.com.dedoduro.modelo.Concurso;
+import br.com.dedoduro.util.Util;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -26,9 +27,13 @@ public class ConcursoMB {
     
     private static String PAGINA_DESCRICAO = "descricaoConcurso";
     
-    Concurso concurso = new Concurso();
+    Concurso concurso = null;
     
     public ConcursoMB() {
+        concurso = Util.captarConcursoSessao();
+        if (Util.isEmpty( concurso )) {
+            concurso = new Concurso();
+        }
     }
 
     public Concurso getConcurso() {
@@ -56,6 +61,8 @@ public class ConcursoMB {
         
         ConcursoDAO dao = new ConcursoDAO(entityManager);
         setConcurso( (Concurso) dao.selectByCodigo( "codigoConcurso", Long.parseLong(codConcurso) ) );
+
+        Util.gravarConcursoSessao( getConcurso() );
         
         return PAGINA_DESCRICAO;
     }

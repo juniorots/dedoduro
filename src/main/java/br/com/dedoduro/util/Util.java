@@ -6,6 +6,7 @@
 
 package br.com.dedoduro.util;
 
+import br.com.dedoduro.modelo.Concurso;
 import br.com.dedoduro.modelo.Usuario;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -153,5 +154,54 @@ public class Util {
         }
         
         return usuario;
+    }
+    
+    /*
+    * Gravando o usuario na sessao
+    */
+    public static void gravarConcursoSessao(Concurso concurso) {
+        FacesContext fc =   FacesContext.getCurrentInstance();
+        HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
+        sessao.setAttribute( "CODIGO_CONCURSO", concurso.getCodigoConcurso() );
+        sessao.setAttribute( "NOME_CONCURSO", concurso.getNomeConcurso());
+        sessao.setAttribute( "URL_IMAGEM", concurso.getUrlImagem());
+        sessao.setAttribute( "URL", concurso.getUrl() );
+    }
+    
+   /*
+    * Captando o usuário da sessao
+    */
+    public static Concurso captarConcursoSessao() {
+        Concurso concurso = null;
+        ExternalContext external =  FacesContext.getCurrentInstance().getExternalContext();
+        HttpSession sessao = (HttpSession) external.getSession(true);
+        
+        if ( !isEmpty(sessao.getAttribute("CODIGO_CONCURSO") ) ) {
+            concurso = new Concurso();
+            concurso.setCodigoConcurso( (Long) sessao.getAttribute("CODIGO_CONCURSO") );
+            concurso.setNomeConcurso( (String) sessao.getAttribute("NOME_CONCURSO") );
+            concurso.setUrlImagem( (String) sessao.getAttribute("URL_IMAGEM") );
+            concurso.setUrl( (String) sessao.getAttribute("URL") );
+        }
+        
+        return concurso;
+    }
+    
+    /*
+     * Util para limpar dados da sessao
+     */
+    public static void limparUsuarioSessao() {
+       FacesContext fc =   FacesContext.getCurrentInstance();
+        HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
+        sessao.setAttribute("CODIGO_USUARIO", "");
+    }
+    
+    /*
+     * Util para limpar dados da sessao
+     */
+    public static void limparConcursoSessao() {
+       FacesContext fc =   FacesContext.getCurrentInstance();
+        HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
+        sessao.setAttribute("CODIGO_CONCURSO", "");
     }
 }
