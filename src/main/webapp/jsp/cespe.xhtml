@@ -31,7 +31,7 @@
                                <span>#{concurso.nomeConcurso}</span>
                                <h:graphicImage alt="#{concurso.nomeConcurso}" library="images" 
                                                name="#{concurso.urlImagem}"/>
-                               <f:param name="codConcurso" value="#{concurso.codigoConcurso}" />
+                               <f:param name="codConcurso" value="#{concurso.id}" />
                             </h:commandLink>
                         </li>
                     </c:forEach>

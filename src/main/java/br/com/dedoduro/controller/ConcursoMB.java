@@ -9,6 +9,7 @@ package br.com.dedoduro.controller;
 import br.com.dedoduro.base.ConcursoDAO;
 import br.com.dedoduro.modelo.Concurso;
 import br.com.dedoduro.util.Util;
+import java.util.UUID;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -60,7 +61,7 @@ public class ConcursoMB {
         entityManager.getTransaction().begin();
         
         ConcursoDAO dao = new ConcursoDAO(entityManager);
-        setConcurso( (Concurso) dao.selectByCodigo( "codigoConcurso", Long.parseLong(codConcurso) ) );
+        setConcurso( (Concurso) dao.selectById( UUID.fromString( codConcurso ) ) );
 
         Util.gravarConcursoSessao( getConcurso() );
         

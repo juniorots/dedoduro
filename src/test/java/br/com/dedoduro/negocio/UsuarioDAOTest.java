@@ -64,7 +64,7 @@ public class UsuarioDAOTest {
         
         usuario.setEmail("juniorots@gmail.com");
         usuario.setSenha("12345");
-        usuario.setReceberEmail("S");
+//        usuario.setReceberEmail("S");
         
         Usuario usInserido = dao.insert(usuario);
         

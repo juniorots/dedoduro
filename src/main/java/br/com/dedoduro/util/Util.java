@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.UUID;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -129,7 +130,7 @@ public class Util {
     public static void gravarUsuarioSessao(Usuario usuario) {
         FacesContext fc =   FacesContext.getCurrentInstance();
         HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
-        sessao.setAttribute( "CODIGO_USUARIO", usuario.getCodigoUsuario() );
+        sessao.setAttribute( "CODIGO_USUARIO", usuario.getId() );
         sessao.setAttribute( "NOME_USUARIO", usuario.getNome() );
         sessao.setAttribute( "NOME_TITULO", usuario.getNomeTitulo() );
          sessao.setAttribute( "EMAIL_USUARIO", usuario.getEmail() );
@@ -146,7 +147,7 @@ public class Util {
         
         if ( !isEmpty(sessao.getAttribute("CODIGO_USUARIO") ) ) {
             usuario = new Usuario();
-            usuario.setCodigoUsuario( (Long) sessao.getAttribute("CODIGO_USUARIO") );
+            usuario.setId( (UUID) sessao.getAttribute("CODIGO_USUARIO") );
             usuario.setNome( (String) sessao.getAttribute("NOME_USUARIO") );
             usuario.setNomeTitulo( (String) sessao.getAttribute("NOME_TITULO") );
              usuario.setEmail( (String) sessao.getAttribute("EMAIL_USUARIO") );
@@ -162,7 +163,7 @@ public class Util {
     public static void gravarConcursoSessao(Concurso concurso) {
         FacesContext fc =   FacesContext.getCurrentInstance();
         HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
-        sessao.setAttribute( "CODIGO_CONCURSO", concurso.getCodigoConcurso() );
+        sessao.setAttribute( "CODIGO_CONCURSO", concurso.getId() );
         sessao.setAttribute( "NOME_CONCURSO", concurso.getNomeConcurso());
         sessao.setAttribute( "URL_IMAGEM", concurso.getUrlImagem());
         sessao.setAttribute( "URL", concurso.getUrl() );
@@ -178,7 +179,7 @@ public class Util {
         
         if ( !isEmpty(sessao.getAttribute("CODIGO_CONCURSO") ) ) {
             concurso = new Concurso();
-            concurso.setCodigoConcurso( (Long) sessao.getAttribute("CODIGO_CONCURSO") );
+            concurso.setId( (UUID) sessao.getAttribute("CODIGO_CONCURSO") );
             concurso.setNomeConcurso( (String) sessao.getAttribute("NOME_CONCURSO") );
             concurso.setUrlImagem( (String) sessao.getAttribute("URL_IMAGEM") );
             concurso.setUrl( (String) sessao.getAttribute("URL") );

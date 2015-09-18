@@ -11,10 +11,10 @@
            <li class='active'><span class="iconeMenu"/><a href='#'>Menu</a>
                <ul>
                    <li><a href="#{request.contextPath}/jsp/principal.xhtml">Início</a></li>
-                   <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+                   <c:if test="#{empty usuarioMB.usuario.id}">
                         <li><a href="#{request.contextPath}/jsp/cadastrarUsuario.xhtml">Cadastrar-se</a></li>
                    </c:if>
-                   <c:if test="#{not empty usuarioMB.usuario.codigoUsuario}">
+                   <c:if test="#{not empty usuarioMB.usuario.id}">
                         <li><a href="#{request.contextPath}/jsp/cadastrarUsuario.xhtml">Altere seus dados</a></li>
                    </c:if>
                    <li><a href="#{request.contextPath}/jsp/todosConcursos.xhtml">Todos os dedurados!</a></li>
@@ -22,7 +22,7 @@
            </li>
             
            <!-- USUARIO NAO IDENTIFICADO -->
-           <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+           <c:if test="#{empty usuarioMB.usuario.id}">
                 <li style='padding-top: 9px; float: right;'>
                     <!--
                      Tratando janela de login
@@ -54,7 +54,7 @@
            </c:if>
             
            <!-- USUARIO IDENTIFICADO -->
-           <c:if test="#{not empty usuarioMB.usuario.codigoUsuario}">
+           <c:if test="#{not empty usuarioMB.usuario.id}">
                 <li style='float: right;'>  
                     <h:form>
                         <h:commandLink value="Sair" action="#{usuarioMB.sairSistema}" class="linkTituloMenu" style="padding: 17px 40px 9px 10px;"/>

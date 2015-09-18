@@ -24,24 +24,16 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Banca extends DomainObject {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigoBanca;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long codigoBanca;
     
     private String nomeBanca;
     private String urlImagem;
     
     @ManyToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name = "codigoConcurso")
+    @JoinColumn(name = "id")
     private Collection<Concurso> concursos;
-
-    public Long getCodigoBanca() {
-        return codigoBanca;
-    }
-
-    public void setCodigoBanca(Long codigoBanca) {
-        this.codigoBanca = codigoBanca;
-    }
 
     public Collection<Concurso> getConcursos() {
         if (concursos == null) {

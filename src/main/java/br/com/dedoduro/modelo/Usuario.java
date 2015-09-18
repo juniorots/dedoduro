@@ -23,9 +23,9 @@ import javax.validation.constraints.Pattern;
 @Entity
 public class Usuario extends DomainObject {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigoUsuario;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long codigoUsuario;
     
     @NotNull
     private String nome;
@@ -44,20 +44,10 @@ public class Usuario extends DomainObject {
     @NotNull
     private Date dtNascimento;
     
-    private String receberEmail = "N"; // S - Sim; N - Nao [DEFAULT];
-    
     @ManyToMany (fetch=FetchType.LAZY)
-    @JoinColumn(name = "codigoBanca")
+    @JoinColumn(name = "id")
     private Collection<Banca> bancas;
     
-    public Long getCodigoUsuario() {
-        return codigoUsuario;
-    }
-
-    public void setCodigoUsuario(Long codigoUsuario) {
-        this.codigoUsuario = codigoUsuario;
-    }
-
     public String getNomeTitulo() {
         return nomeTitulo;
     }
@@ -80,14 +70,6 @@ public class Usuario extends DomainObject {
 
     public void setDtNascimento(Date dtNascimento) {
         this.dtNascimento = dtNascimento;
-    }
-
-    public String getReceberEmail() {
-        return receberEmail;
-    }
-
-    public void setReceberEmail(String receberEmail) {
-        this.receberEmail = receberEmail;
     }
 
     public Collection<Banca> getBancas() {

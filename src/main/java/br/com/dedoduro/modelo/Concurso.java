@@ -19,23 +19,15 @@ import javax.persistence.Id;
 @Entity
 public class Concurso extends DomainObject {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigoConcurso;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long codigoConcurso;
     
     private String nomeConcurso;
     private String urlImagem;
     private String url;
     
     private int contadorLogico;
-
-    public Long getCodigoConcurso() {
-        return codigoConcurso;
-    }
-
-    public void setCodigoConcurso(Long codigoConcurso) {
-        this.codigoConcurso = codigoConcurso;
-    }
 
     public String getUrl() {
         return url;

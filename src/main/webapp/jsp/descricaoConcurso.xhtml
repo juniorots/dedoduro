@@ -28,7 +28,7 @@
                         <span class="fontePadrao" style="padding-left: 25px; position:fixed;"><b>R$ 1,99</b></span><br /><br />
                         
                         <!-- Codigo customizado do paypal -->
-                        <c:if test="#{not empty usuarioMB.usuario.codigoUsuario}">
+                        <c:if test="#{not empty usuarioMB.usuario.id}">
                             <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" 
                                    border="0" name="submit" 
                                    alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"/>
@@ -37,7 +37,7 @@
                                  width="1" height="1" />
                         </c:if>
                         
-                        <c:if test="#{empty usuarioMB.usuario.codigoUsuario}">
+                        <c:if test="#{empty usuarioMB.usuario.id}">
                             <span class="alertaLogin">
                                 Ops...! Amigo, identificamos que você não entrou no sistema,<br />
                                 isso é necessário para comprar o pacote de atualização apresentado. <br /> <br />

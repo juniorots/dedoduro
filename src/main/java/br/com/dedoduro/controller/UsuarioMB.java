@@ -112,7 +112,7 @@ public class UsuarioMB implements Serializable {
         Usuario usInserido = dao.insert( getUsuario() );
         entityManager.getTransaction().commit();
         
-        if ( !Util.isEmpty( usInserido.getCodigoUsuario() ) ) {
+        if ( !Util.isEmpty( usInserido.getId() ) ) {
             mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Status", "Usuário cadastrado com sucesso.");
             usInserido.setNomeTitulo( usInserido.getNome() );
             Util.gravarUsuarioSessao( usInserido );
@@ -229,7 +229,7 @@ public class UsuarioMB implements Serializable {
      * Tratando do fechamento da sessao aberta perlo usuario
      */
     public void sairSistema() {
-        Util.limparUsuarioSessao();
-        Util.limparConcursoSessao();
+        setUsuario( new Usuario() );
+        Util.gravarUsuarioSessao( getUsuario() );
     }
 }
