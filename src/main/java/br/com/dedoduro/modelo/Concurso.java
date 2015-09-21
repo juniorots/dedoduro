@@ -8,9 +8,6 @@ package br.com.dedoduro.modelo;
 
 import br.com.dedoduro.framework.persistence.DomainObject;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
@@ -18,10 +15,6 @@ import javax.persistence.Id;
  */
 @Entity
 public class Concurso extends DomainObject {
-    
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long codigoConcurso;
     
     private String nomeConcurso;
     private String urlImagem;

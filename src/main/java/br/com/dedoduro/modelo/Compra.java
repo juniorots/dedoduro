@@ -7,11 +7,12 @@
 package br.com.dedoduro.modelo;
 
 import br.com.dedoduro.framework.persistence.DomainObject;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -20,17 +21,20 @@ import javax.persistence.OneToMany;
 @Entity
 public class Compra extends DomainObject {
     
-    @OneToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch=FetchType.LAZY)
     @JoinColumn(name="id")
     private Collection<Concurso> concursos;
     
-    @OneToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch=FetchType.LAZY)
     @JoinColumn(name="id")
     private Collection<Usuario> usuarios;
     
     private boolean enviarEmail = false;
 
     public Collection<Concurso> getConcursos() {
+        if (concursos == null) {
+            concursos = new ArrayList();
+        }
         return concursos;
     }
 
@@ -39,6 +43,9 @@ public class Compra extends DomainObject {
     }
 
     public Collection<Usuario> getUsuarios() {
+        if (usuarios == null) {
+            usuarios = new ArrayList();
+        }
         return usuarios;
     }
 

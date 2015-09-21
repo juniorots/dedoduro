@@ -1,16 +1,8 @@
 package br.com.dedoduro.modelo;
 
 import br.com.dedoduro.framework.persistence.DomainObject;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
@@ -22,10 +14,6 @@ import javax.validation.constraints.Pattern;
  */
 @Entity
 public class Usuario extends DomainObject {
-    
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long codigoUsuario;
     
     @NotNull
     private String nome;
@@ -44,9 +32,9 @@ public class Usuario extends DomainObject {
     @NotNull
     private Date dtNascimento;
     
-    @ManyToMany (fetch=FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Collection<Banca> bancas;
+//    @ManyToMany (fetch=FetchType.LAZY)
+//    @JoinColumn(name = "id")
+//    private Collection<Banca> bancas;
     
     public String getNomeTitulo() {
         return nomeTitulo;
@@ -70,17 +58,6 @@ public class Usuario extends DomainObject {
 
     public void setDtNascimento(Date dtNascimento) {
         this.dtNascimento = dtNascimento;
-    }
-
-    public Collection<Banca> getBancas() {
-        if (bancas == null) {
-            bancas = new ArrayList<Banca>();
-        }
-        return bancas;
-    }
-
-    public void setBancas(ArrayList<Banca> bancas) {
-        this.bancas = bancas;
     }
 
     public String getEmail() {
