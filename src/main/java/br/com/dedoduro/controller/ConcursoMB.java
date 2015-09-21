@@ -6,8 +6,11 @@
 
 package br.com.dedoduro.controller;
 
+import br.com.dedoduro.base.CompraDAO;
 import br.com.dedoduro.base.ConcursoDAO;
+import br.com.dedoduro.modelo.Compra;
 import br.com.dedoduro.modelo.Concurso;
+import br.com.dedoduro.modelo.Usuario;
 import br.com.dedoduro.util.Util;
 import java.util.UUID;
 import javax.faces.bean.ManagedBean;
@@ -66,5 +69,36 @@ public class ConcursoMB {
         Util.gravarConcursoSessao( getConcurso() );
         
         return PAGINA_DESCRICAO;
+    }
+    
+    /**
+     * Responsavel por validar o interesse do usuario
+     * em comprar o pacote de atualizacao existente
+     * na sessao, ou seja, o ultimo visualizado
+     */
+    public void computarCompra() {
+        @Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        Usuario usuarioSessao = Util.captarUsuarioSessao();
+        Concurso concursoSessao = Util.captarConcursoSessao();
+        Compra compra = new Compra();      
+        
+        compra.getConcursos().add(concursoSessao);
+        compra.getUsuarios().add(usuarioSessao);
+        
+        CompraDAO dao = new CompraDAO(entityManager);
+        dao.insert( compra );
+        
+        entityManager.getTransaction().commit();
+    }
+    
+    public void teste() {
+        System.out.println("TESTE DE METODO...");
+        return;
     }
 }
