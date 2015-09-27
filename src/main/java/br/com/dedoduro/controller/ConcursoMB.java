@@ -20,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import lombok.Cleanup;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -95,10 +96,29 @@ public class ConcursoMB {
         dao.insert( compra );
         
         entityManager.getTransaction().commit();
+        
+        /*
+         * Procurando finalizar o processo de compra
+         */
+        carregarPayPal();
     }
     
-    public void teste() {
-        System.out.println("TESTE DE METODO...");
-        return;
+    /*
+     * Realizando chamada externa do paypal visando efetivacao do pagamento
+     * da possivel compra realizada
+     */
+    public void carregarPayPal() {
+        String cmd = (String) FacesContext.getCurrentInstance().
+                             getExternalContext().getRequestParameterMap().get("cmd");
+        String hosted_button_id = (String) FacesContext.getCurrentInstance().
+                             getExternalContext().getRequestParameterMap().get("hosted_button_id");
+        String currency_code = (String) FacesContext.getCurrentInstance().
+                             getExternalContext().getRequestParameterMap().get("currency_code");
+        
+        RequestContext.getCurrentInstance().execute(
+                "window.open('https://www.paypal.com/cgi-bin/webscr?cmd="+cmd+"&"
+                        + "hosted_button_id="+hosted_button_id+"&"
+                        + "currency_code="+currency_code+"', "
+                        + "'_self')");
     }
 }
