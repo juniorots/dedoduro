@@ -43,7 +43,7 @@
                     
                     <p:outputLabel for="dtNascimento" value="Data de Nascimento: " styleClass="fontePadrao"/>
                     <p:calendar id="dtNascimento" value="#{usuarioMB.usuario.dtNascimento}" locale="pt" navigator="true"
-                                pattern="dd/MM/yyyy" required="true" requiredMessage="Campo obrigatório" 
+                                pattern="dd/MM/yyyy" required="true" requiredMessage="Campo obrigatório" readonlyInput="true"
                                 maxlength="10" size="10" yearRange="-111:+39"/>
                    <p:message for="dtNascimento"/>
                    
