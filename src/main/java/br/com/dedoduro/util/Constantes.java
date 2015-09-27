@@ -23,4 +23,11 @@ public class Constantes {
     */
     public static String EMAIL_REMETENTE_GMAIL = "dedoduro.default.user@gmail.com";
     public static String SENHA_REMETENTE_GMAIL = "d3d0Dur0123";
+    
+    /**
+     * Uteis em threads
+     */
+    public static int UM_SEGUNDO = 1000;
+    public static int UM_MINUTO = 60 * UM_SEGUNDO;
+    public static int UMA_HORA = 60 * UM_MINUTO;
 }
