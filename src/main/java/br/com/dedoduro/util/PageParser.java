@@ -6,53 +6,45 @@
 
 package br.com.dedoduro.util;
 
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  *
  * @author Jose Alves
  */
 public class PageParser {
-    public static HtmlPage PAGE;
+//    public static HtmlPage PAGE;
         
-    public PageParser(String url) {
-        final WebClient webClient = new WebClient();
-        HtmlPage htmlPage = null;
-        try {
-            htmlPage = webClient.getPage(url);
-        } catch (IOException ex) {
-            htmlPage = null;
-        } catch (FailingHttpStatusCodeException fe) {
-            htmlPage = null;
-        }
-        PageParser.PAGE = htmlPage;
-    }
-    
-    public List<String> getByXPath(String xpath){
-        List<String> results = new LinkedList<String>();
-        List<?> byXPath = PAGE.getByXPath(xpath);
-        for(Object obj : byXPath){
-            if(HtmlElement.class.isAssignableFrom(obj.getClass())){
-                results.add(((HtmlElement)obj).getTextContent());
-            }
-        }
-        return results;
-    }
-
-    public List<HtmlElement> getHtmlElementsByXPath(String xpath){
-        List<HtmlElement> results = new LinkedList<HtmlElement>();
-        List<?> byXPath = PAGE.getByXPath(xpath);
-        for(Object obj : byXPath){
-            if(HtmlElement.class.isAssignableFrom(obj.getClass())){
-                results.add(((HtmlElement)obj));
-            }
-        }
-        return results;
-    }
+//    public PageParser(String url) {
+//        final WebClient webClient = new WebClient();
+//        HtmlPage htmlPage = null;
+//        try {
+//            htmlPage = webClient.getPage(url);
+//        } catch (IOException ex) {
+//            htmlPage = null;
+//        } catch (FailingHttpStatusCodeException fe) {
+//            htmlPage = null;
+//        }
+//        PageParser.PAGE = htmlPage;
+//    }
+//    
+//    public List<String> getByXPath(String xpath){
+//        List<String> results = new LinkedList<String>();
+//        List<?> byXPath = PAGE.getByXPath(xpath);
+//        for(Object obj : byXPath){
+//            if(HtmlElement.class.isAssignableFrom(obj.getClass())){
+//                results.add(((HtmlElement)obj).getTextContent());
+//            }
+//        }
+//        return results;
+//    }
+//
+//    public List<HtmlElement> getHtmlElementsByXPath(String xpath){
+//        List<HtmlElement> results = new LinkedList<HtmlElement>();
+//        List<?> byXPath = PAGE.getByXPath(xpath);
+//        for(Object obj : byXPath){
+//            if(HtmlElement.class.isAssignableFrom(obj.getClass())){
+//                results.add(((HtmlElement)obj));
+//            }
+//        }
+//        return results;
+//    }
 }
