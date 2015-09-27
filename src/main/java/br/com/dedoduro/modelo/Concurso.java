@@ -20,22 +20,12 @@ public class Concurso extends DomainObject {
     private String urlImagem;
     private String url;
     
-    private int contadorLogico;
-
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public int getContadorLogico() {
-        return contadorLogico;
-    }
-
-    public void setContadorLogico(int contadorLogico) {
-        this.contadorLogico = contadorLogico;
     }
 
     public String getNomeConcurso() {

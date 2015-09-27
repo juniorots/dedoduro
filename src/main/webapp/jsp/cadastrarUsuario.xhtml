@@ -46,8 +46,14 @@
                                 pattern="dd/MM/yyyy" required="true" requiredMessage="Campo obrigatório" 
                                 maxlength="10" size="10" yearRange="-111:+39"/>
                    <p:message for="dtNascimento"/>
+                   
+                   <p:outputLabel for="telefone" value="Telefone: " styleClass="fontePadrao"/>
+                   <p:inputMask id="telefone" value="#{usuarioMB.usuario.telefone}" mask="(99) 9999-9999" 
+                                alt="Havendo o nono digito iremos inserí-lo automaticamente, quando necessário."/>
+                   <p:message for="telefone"/>
                 </h:panelGrid>
                 <br />
+                
                 <h:panelGrid cellpadding="10" cellspacing="5" columns="2" style="margin-left: 20px">
                     <p:commandButton value="Limpar" id="btnLimpar" type="reset" ajax="false"/>
                     

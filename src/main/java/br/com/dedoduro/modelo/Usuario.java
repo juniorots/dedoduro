@@ -28,13 +28,19 @@ public class Usuario extends DomainObject {
     @NotNull
     private String senha;
     
+    private String telefone;
+    
     @Temporal(DATE)
     @NotNull
     private Date dtNascimento;
-    
-//    @ManyToMany (fetch=FetchType.LAZY)
-//    @JoinColumn(name = "id")
-//    private Collection<Banca> bancas;
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     
     public String getNomeTitulo() {
         return nomeTitulo;

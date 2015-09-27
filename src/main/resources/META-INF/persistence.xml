@@ -19,6 +19,7 @@
       <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/dedoduro"/>
       <property name="hibernate.connection.username" value="dedoduro"/>
       <property name="hibernate.connection.password" value="ablife"/>
+      
       <!--
         <property name="hibernate.connection.username" value="USUARIO"/>
         <property name="hibernate.connection.password" value="SENHA"/>
