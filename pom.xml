@@ -13,6 +13,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.powermock.version>1.5.2</org.powermock.version>
+        <camel.version>2.15.3</camel.version>
     </properties>
     
     <dependencies>
@@ -148,6 +149,29 @@
             <artifactId>html-email-service</artifactId>
             <version>0.4.0</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-tagsoup</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        
         <!--
         <dependency>
             <groupId>edu.uci.ics</groupId>

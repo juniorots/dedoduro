@@ -6,10 +6,34 @@
 
 package br.com.dedoduro.leituraPaginas;
 
+import br.com.dedoduro.util.Constantes;
+import br.com.dedoduro.util.PageExtractorRoutes;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.impl.DefaultCamelContext;
+
 /**
  *
  * @author Jose Alves
  */
 public class ProcessarCespe {
-    
+    final DefaultCamelContext camelContext = new DefaultCamelContext();
+    PageExtractorRoutes pageRoutes = new PageExtractorRoutes();
+
+    public void tratarPagina() {
+        try {
+            pageRoutes.setxPath("//body//p");
+            pageRoutes.setFiltro("filtro_aqui");
+            
+            camelContext.addRoutes(pageRoutes);
+            camelContext.start();
+            
+            ProducerTemplate template = camelContext.createProducerTemplate();
+            String retorno = template.requestBody("direct:page_extractor", "SITE_AQUI", String.class);
+            
+            Thread.sleep(30 * Constantes.UM_MINUTO);
+            camelContext.stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
