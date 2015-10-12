@@ -19,18 +19,20 @@ public class ProcessarCespe {
     final DefaultCamelContext camelContext = new DefaultCamelContext();
     PageExtractorRoutes pageRoutes = new PageExtractorRoutes();
 
-    public void tratarPagina() {
+    public void tratarPagina(String url) {
         try {
-            pageRoutes.setxPath("//body//p");
-            pageRoutes.setFiltro("filtro_aqui");
+            pageRoutes.setxPath("//html");
+            pageRoutes.setFiltro("");
             
             camelContext.addRoutes(pageRoutes);
             camelContext.start();
             
             ProducerTemplate template = camelContext.createProducerTemplate();
-            String retorno = template.requestBody("direct:page_extractor", "SITE_AQUI", String.class);
-            
-            Thread.sleep(30 * Constantes.UM_MINUTO);
+            String retorno = template.requestBody("direct:page_extractor", url, String.class);
+
+            System.out.println("Retorno: "+retorno);
+//            Thread.sleep(30 * Constantes.UM_MINUTO);
+            Thread.sleep(Constantes.UM_SEGUNDO);
             camelContext.stop();
         } catch (Exception e) {
             e.printStackTrace();

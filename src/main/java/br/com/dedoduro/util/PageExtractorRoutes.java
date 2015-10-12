@@ -21,11 +21,12 @@ public class PageExtractorRoutes extends RouteBuilder {
     
     @Override
     public void configure() throws Exception {
-        from("director:page_extractor")
+        from("direct:page_extractor")
                 .setHeader(Exchange.HTTP_URI, body())
                 .log("Coletando informacoes de: '${body}'")
+                .filter().xpath( getxPath() )
                 .to("http:extractor")
-                .split(xpath( getxPath() ), new EstruturarPagina( getFiltro() ) )
+//                .split(xpath( getxPath() ), new EstruturarPagina( getFiltro() ) )
                 .end();
     }
 
